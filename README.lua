@@ -585,7 +585,6 @@ spawn(function()
 						end
 					end
 				end
-				workspace.Enemies:GetChildren()[2].VehicleSeat
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Name == 'FishBoat' then
 						if v:FindFirstChild('Health') and v.Health.Value > 0 then
