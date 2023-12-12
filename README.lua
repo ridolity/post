@@ -536,8 +536,8 @@ spawn(function()
 				end	
 				local Farming_Tril = false
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then 
-						if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' or v.Name == 'Fish Crew Member' then
+					if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' or v.Name == 'Fish Crew Member' then
+						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
 							Status_Win:Set('Status: Farm '..v.Name)
 							if TweenP == nil then
 							else
@@ -576,8 +576,7 @@ spawn(function()
 					end
 				end
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == 'PirateBrigade' or v.Name == 'PirateGrandBrigade' or v.Name == 'FishBoat' then
-						Status_Win:Set('Status: Farm xp '..v.Name)
+					if v.Name == 'FishBoat' then
 						if v:FindFirstChild('Health') and v.Health.Value > 0 then
 							-- Aimbot
 							if TweenP == nil then
@@ -698,7 +697,7 @@ spawn(function()
 				if not Farming_Tril then
 					local Check_Boat_H = false 
 					for i,v in pairs(game.Workspace.Boats:GetChildren()) do
-						if v.Name == 'PirateGrandBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+						if Check_Boat_H == false and v.Name == 'PirateGrandBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
 							Check_Boat_H = true
 							if position_boat == nil then
 								position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
