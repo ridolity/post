@@ -586,7 +586,7 @@ spawn(function()
 					end
 				end
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == 'FishBoat' then
+					if v.Name == 'FishBoat' or v.Name == 'PirateGrandBrigade' or v.Name == 'PirateBrigade' then
 						if v:FindFirstChild('Health') and v.Health.Value > 0 then
 							-- Aimbot
 							if TweenP == nil then
