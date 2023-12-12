@@ -521,6 +521,16 @@ spawn(function()
 		end)
 	end
 end)
+function GetSkill_C(NameW,Skill)
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:GetChildren()) do
+		if v.Name == NameW then
+			if v:FindFirstChild(Skill) and tostring(v[Skill].Title.TextColor) == 'Institutional white' and v[Skill].Cooldown.AbsoluteSize.X == 0 then
+				return true
+			end
+		end
+	end
+	return false
+end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
@@ -575,6 +585,7 @@ spawn(function()
 						end
 					end
 				end
+				workspace.Enemies:GetChildren()[2].VehicleSeat
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Name == 'FishBoat' then
 						if v:FindFirstChild('Health') and v.Health.Value > 0 then
@@ -597,7 +608,7 @@ spawn(function()
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
-							PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+							PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
 							local check_1 = nil
 							local check_2 = nil
 							if game:GetService("Players").LocalPlayer.Data.Stats["Melee"].Level.Value >= 2000 then
@@ -689,7 +700,7 @@ spawn(function()
 										end
 									end
 								end
-							until not v.Parent or v.Health.Value <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+							until not v or v.Health.Value <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							Attack = false
 						end
 					end
