@@ -564,6 +564,10 @@ spawn(function()
 							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 							end
+							postis = 0
+							if v.Name == 'Terrorshark' then
+								postis = 30
+							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
 							repeat wait(.2)
@@ -578,7 +582,7 @@ spawn(function()
 									until percent >= 40 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
-									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,50,30))
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,50,postis))
 								end
 							until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							Attack = false
@@ -587,7 +591,7 @@ spawn(function()
 				end
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Name == 'FishBoat' or v.Name == 'PirateGrandBrigade' or v.Name == 'PirateBrigade' then
-						if v:FindFirstChild('Health') and v.Health.Value > 0 then
+						if v:FindFirstChild('Health') and v.Health.Value > 0 and (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 800 then
 							-- Aimbot
 							if TweenP == nil then
 							else
@@ -701,6 +705,15 @@ spawn(function()
 								end
 							until not v or v.Health.Value <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							Attack = false
+						elseif (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 800 then
+							if TweenP == nil then
+							else
+								TweenP:Cancel()
+							end
+							if Tween == nil then
+							else
+								Tween:Cancel()
+							end
 						end
 					end
 				end
