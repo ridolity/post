@@ -144,7 +144,7 @@ end
 setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
 Update_New_S:AddToggle({
 	Name = 'Auto Farm Shark Anchor',
-	Enabled = false,
+	Enabled = _G.Setting['Shark Anchor'],
 	Callback = function(vu)
 		Auto_Farm_Shark_Anchor = vu
 		if vu then
@@ -178,7 +178,7 @@ local S_T_M = Update_New_S:AddLabel({ --
 })
 Update_New_S:AddToggle({
 	Name = 'Auto Farm Monster Magnet',
-	Enabled = false,
+	Enabled = _G.Setting['Shark Anchor'],
 	Callback = function(vu)
 		Auto_Farm_Monster_Magnet = vu
 	end
@@ -204,7 +204,7 @@ local S_T_T = Update_New_S:AddLabel({ --
 })
 Update_New_S:AddToggle({
 	Name = 'Auto Farm Terror Jaw',
-	Enabled = false,
+	Enabled = _G.Setting['Shark Anchor'],
 	Callback = function(vu)
 		Auto_Farm_Terror_Jaw = vu
 	end
@@ -224,7 +224,7 @@ local S_T_S = Update_New_S:AddLabel({ --
 })
 Update_New_S:AddToggle({
 	Name = 'Auto Farm Shark Tooth',
-	Enabled = false,
+	Enabled = _G.Setting['Shark Anchor'],
 	Callback = function(vu)
 		Auto_Farm_Shark_Tooth = vu
 	end
@@ -650,13 +650,21 @@ spawn(function()
 								end
 							end 
 							]]
+							spawn(function()
+								repeat wait(.1)
+									TP(v.VehicleSeat.CFrame*CFrame.new(0,5,0))
+								until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+							end)
+							local get_skill = {}
 							repeat wait(.2)
-								if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 30 then
-									TP(v.VehicleSeat.CFrame*CFrame.new(0,15,0))
-								else
+								if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 60 then
 									for ix,vx in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 										if vx:IsA('Tool') then
 											name_weapon = vx.Name
+											if not table.find(get_skill,vx.Name) then
+												EquipWeapon(name_weapon)
+												table.insert(get_skill,vx.Name)
+											end
 											if GetSkill_C(name_weapon,'Z') then
 												EquipWeapon(name_weapon)
 												wait(0.2)
@@ -784,7 +792,7 @@ spawn(function()
 				if not Farming_Tril then
 					local Check_Boat_H = false 
 					for i,v in pairs(game.Workspace.Boats:GetChildren()) do
-						if Check_Boat_H == false and v.Name == 'PirateGrandBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+						if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
 							Check_Boat_H = true
 							if position_boat == nil then
 								position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
@@ -836,7 +844,7 @@ spawn(function()
 									wait(1)
 									local args = {
 										[1] = "BuyBoat",
-										[2] = "PirateGrandBrigade"
+										[2] = _G.Setting['Boat']
 									}
 									
 									game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
