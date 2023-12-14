@@ -652,7 +652,7 @@ spawn(function()
 							]]
 							spawn(function()
 								repeat wait(.1)
-									TP(v.VehicleSeat.CFrame*CFrame.new(0,5,0))
+									TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 								until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							end)
 							local get_skill = {}
@@ -675,7 +675,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 												if GetSkill_C(name_weapon,'X') then
@@ -687,7 +687,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 												if GetSkill_C(name_weapon,'C') then
@@ -699,7 +699,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
 													wait(.2)
@@ -714,7 +714,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 											end
@@ -728,12 +728,15 @@ spawn(function()
 													EquipWeapon(name_weapon)
 													wait(0.2)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
 														game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 												if GetSkill_C(name_weapon,'X') then
@@ -745,7 +748,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 												if GetSkill_C(name_weapon,'C') then
@@ -757,7 +760,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
 													wait(.2)
@@ -772,7 +775,7 @@ spawn(function()
 														game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 														wait(.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-														wait(1.5)
+														wait(0.5)
 													end
 												end
 											end
