@@ -654,7 +654,7 @@ spawn(function()
 											EquipWeapon(name_weapon)
 											if GetSkill_C(name_weapon,'Z') then
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 													wait(.5)
@@ -664,7 +664,7 @@ spawn(function()
 											end
 											if GetSkill_C(name_weapon,'X') then
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 													wait(.5)
@@ -674,7 +674,7 @@ spawn(function()
 											end
 											if GetSkill_C(name_weapon,'C') then
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 													wait(.5)
@@ -687,7 +687,7 @@ spawn(function()
 											end
 											if GetSkill_C(name_weapon,'V') then
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 													wait(.5)
