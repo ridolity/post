@@ -616,6 +616,11 @@ spawn(function()
 							PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
 							local check_1 = nil
 							local check_2 = nil
+							if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Melee']) and not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Melee']) then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+								wait(1)
+							end
+							--[[
 							if game:GetService("Players").LocalPlayer.Data.Stats["Melee"].Level.Value >= 2000 then
 								if check_1 == nil then
 									check_1 = 'Melee'
@@ -644,55 +649,119 @@ spawn(function()
 									check_2 = 'Blox Fruit'
 								end
 							end 
+							]]
 							repeat wait(.2)
 								if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 30 then
 									TP(v.VehicleSeat.CFrame*CFrame.new(0,15,0))
 								else
 									for ix,vx in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-										if vx:IsA('Tool') and tostring(vx.ToolTip) == check_1 or vx:IsA('Tool') and tostring(vx.ToolTip) == check_2 then
+										if vx:IsA('Tool') then
 											name_weapon = vx.Name
-											EquipWeapon(name_weapon)
 											if GetSkill_C(name_weapon,'Z') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 													wait(.5)
 													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-													wait()
+													wait(1.5)
 												end
 											end
 											if GetSkill_C(name_weapon,'X') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 													wait(.5)
 													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-													wait()
+													wait(1.5)
 												end
 											end
 											if GetSkill_C(name_weapon,'C') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 													wait(.5)
 													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-													wait()
+													wait(1.5)
 												end
 												game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
 												wait(.2)
 												game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
 											end
 											if GetSkill_C(name_weapon,'V') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
 												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 												if tonumber(v.Health.Value) > 0 then
 													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 													wait(.5)
 													game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-													wait()
+													wait(1.5)
+												end
+											end
+										end
+									end
+									for ix,vx in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+										if vx:IsA('Tool') then
+											name_weapon = vx.Name
+											if GetSkill_C(name_weapon,'Z') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
+												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+												if tonumber(v.Health.Value) > 0 then
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													wait(1.5)
+												end
+											end
+											if GetSkill_C(name_weapon,'X') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
+												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+												if tonumber(v.Health.Value) > 0 then
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													wait(1.5)
+												end
+											end
+											if GetSkill_C(name_weapon,'C') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
+												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+												if tonumber(v.Health.Value) > 0 then
+													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+													wait(1.5)
+												end
+												game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
+												wait(.2)
+												game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
+											end
+											if GetSkill_C(name_weapon,'V') then
+												EquipWeapon(name_weapon)
+												wait(0.2)
+												TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+												if tonumber(v.Health.Value) > 0 then
+													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+													wait(1.5)
 												end
 											end
 										end
