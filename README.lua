@@ -100,6 +100,17 @@ local Quest_S = General_T:CreateSection({
     Side = 'Left'
 })
 -- New
+local Level_S = General_T:CreateSection({
+    Name = " Level ",
+    Side = 'Left'
+})
+Level_S:AddToggle({
+	Name = 'Farm Level',
+	Enabled = _G.Setting['Farm Level'],
+	Callback = function(vu)
+		Farm_Level = vu
+	end
+})
 local Update_New_S = General_T:CreateSection({
     Name = " Shark Anchor ",
     Side = 'Left'
