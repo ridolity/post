@@ -2313,68 +2313,65 @@ spawn(function()
 													EquipWeapon(name_weapon)
 													table.insert(get_skill,vx.Name)
 												end
-												if GetSkill_C(name_weapon,'Z') then
+												if GetSkill_C(name_weapon,'Z') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-														wait(0.5)
-													end
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													wait(0.5)
 												end
-												if GetSkill_C(name_weapon,'X') then
+												if GetSkill_C(name_weapon,'X') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-														wait(0.5)
-													end
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													wait(0.5)
 												end
-												if GetSkill_C(name_weapon,'C') then
+												if GetSkill_C(name_weapon,'C') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-														wait(0.5)
-													end
-													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
-													wait(.2)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+													wait(0.5)
 												end
 												if GetSkill_C(name_weapon,'V') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-														wait(0.5)
-													end
+													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+													wait(0.5)
 												end
 											end
 										end
@@ -2383,68 +2380,65 @@ spawn(function()
 										if vx:IsA('Tool') then
 											if tostring(vx.ToolTip) == 'Melee' or tostring(vx.ToolTip) == 'Sword' or tostring(vx.ToolTip) == 'Blox Fruit' or tostring(vx.ToolTip) == 'Gun' then
 												name_weapon = vx.Name
-												if GetSkill_C(name_weapon,'Z') then
+												if GetSkill_C(name_weapon,'Z') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
+													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													wait(0.5)
 												end
-												if GetSkill_C(name_weapon,'X') then
+												if GetSkill_C(name_weapon,'X') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-														wait(0.5)
-													end
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													wait(0.5)
 												end
-												if GetSkill_C(name_weapon,'C') then
+												if GetSkill_C(name_weapon,'C') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-														wait(0.5)
-													end
-													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
-													wait(.2)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+													wait(0.5)
 												end
-												if GetSkill_C(name_weapon,'V') then
+												if GetSkill_C(name_weapon,'V') and tonumber(v.Health.Value) > 0 then
 													EquipWeapon(name_weapon)
 													wait(0.2)
-													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+														game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+														wait(0.5)
+														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+													end
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-													if tonumber(v.Health.Value) > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-														wait(0.5)
-													end
+													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+													wait(0.5)
 												end
 											end
 										end
