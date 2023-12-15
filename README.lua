@@ -2606,7 +2606,7 @@ end
 spawn(function()
 	game:GetService("RunService").Stepped:Connect(function()
 		pcall(function()
-			if comi or Auto_Farm_Trial or Auto_Farm_Ancient_One or Auto_Farm_Shark_Anchor or Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet then
+			if comi or Auto_Farm_Trial or Auto_Farm_Ancient_One or Auto_Farm_Shark_Anchor or Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Farm_Level then
 				if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 					if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
 						if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true and not SitP and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Tooth and not Auto_Farm_Shark_Anchor and not Auto_Farm_Terror_Jaw then
@@ -2820,7 +2820,7 @@ end
 spawn(function()
 	while task.wait() do
 		pcall(function()
-			if Race_Attack or Attack then
+			if Race_Attack or Attack or Farm_Level then
 				AttackNoCD()
 				game:GetService("RunService").Stepped:wait()
 				if time_all_x >= 20 then
