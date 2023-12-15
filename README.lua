@@ -2321,7 +2321,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 													wait(.5)
@@ -2336,7 +2335,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 													wait(.5)
@@ -2351,7 +2349,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 													wait(.5)
@@ -2366,7 +2363,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 													wait(.5)
@@ -2388,7 +2384,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
 													wait(.5)
@@ -2403,7 +2398,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
 													wait(.5)
@@ -2418,7 +2412,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
 													wait(.5)
@@ -2433,7 +2426,6 @@ spawn(function()
 														wait(0.5)
 														game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													end
-													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
 													wait(.5)
