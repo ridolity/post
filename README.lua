@@ -2009,12 +2009,7 @@ end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
-			if Farm_Level then
-				FarmLevel()	
-				if game.Players.LocalPlayer.Data.Level.Value >= _G.Setting['Level'] then
-					FarmLevel = false
-				end
-			elseif Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Auto_Farm_Shark_Anchor then 
+			if Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Auto_Farm_Shark_Anchor then 
 				local Shark_Tooth_I = CheckItem_X('Shark Tooth')
 				local Fool_Gold_I = CheckItem_X("Fool's Gold")
 				local Mutant_Tooth_I = CheckItem_X('Mutant Tooth')
@@ -2181,7 +2176,12 @@ end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
-			if Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Auto_Farm_Shark_Anchor then 
+			if Farm_Level then
+				FarmLevel()	
+				if game.Players.LocalPlayer.Data.Level.Value >= _G.Setting['Level'] then
+					FarmLevel = false
+				end
+			elseif Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Auto_Farm_Shark_Anchor then 
 				if not kmldgf and Shark_Tooth_Necklace_H and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild('Shark Tooth Necklace') then
 					local args = {
 						[1] = "LoadItem",
@@ -2316,6 +2316,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'Z') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2328,6 +2331,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'X') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2340,6 +2346,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'C') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2355,6 +2364,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'V') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2389,6 +2401,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'X') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2401,6 +2416,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'C') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
@@ -2416,6 +2434,9 @@ spawn(function()
 												if GetSkill_C(name_weapon,'V') then
 													EquipWeapon(name_weapon)
 													wait(0.2)
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 													TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
 													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
 													if tonumber(v.Health.Value) > 0 then
