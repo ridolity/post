@@ -135,7 +135,7 @@ local Server_S = General_T:CreateSection({
 	Side = 'Right'
 })
 Server_S:AddTextbox({
-	Name = 'Job Id',
+	Name = ' Job Id ',
 	Value = '...',
 	Callback = function(vu)
 		Job_Id = vu
@@ -169,9 +169,16 @@ Fox_Lamp_S:AddLabel({
 })
 Fox_Lamp_S:AddToggle({
 	Name = 'Auto Farm Fox Lamp',
-	Enabled = false,
+	Enabled = _G.Setting['Fox Lamp'],
 	Callback = function(vu)
 		Auto_Fox_Lamp = vu
+	end
+})
+Fox_Lamp_S:AddToggle({
+	Name = 'Auto Hop Server',
+	Enabled = _G.Setting['Fox Lamp Hop'],
+	Callback = function(vu)
+		Auto_Hop_Server = vu
 	end
 })
 -- Shark Anchor
@@ -2241,6 +2248,73 @@ end
 if _G.Setting['Boat'] == nil then
 	_G.Setting['Boat'] = 'PirateGrandBrigade'
 end
+function Hop_Server()
+    if not TP_Ser then
+        TP_Ser = true
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0;
+            for i,v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _,Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    -- delfile("NotSameServers.json")
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            TP_Ser = true
+                            -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(.1)
+                    end
+                end
+            end
+        end
+        function Bring()
+            while wait(.1) do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+        Bring()
+    end
+end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
@@ -2317,6 +2391,14 @@ spawn(function()
 					end
 				else
 					Status_Win:Set('Status: wait fullmoon. ')
+					if Auto_Hop_Server then
+						wait(2)
+						if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+						else
+							Hop_Server()
+							wait(50)
+						end
+					end
 				end
 			elseif Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Auto_Farm_Shark_Anchor then 
 				if not kmldgf and Shark_Tooth_Necklace_H and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild('Shark Tooth Necklace') then
