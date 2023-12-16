@@ -132,7 +132,7 @@ spawn(function()
 end)
 local Server_S = General_T:CreateSection({
 	Name = " Server ",
-	Side = 'Left'
+	Side = 'Right'
 })
 Server_S:AddTextbox({
 	Name = 'Job Id',
