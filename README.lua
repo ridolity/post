@@ -2271,6 +2271,12 @@ function Hop_Server()
             for i,v in pairs(Site.data) do
                 local Possible = true
                 ID = tostring(v.id)
+				game.StarterGui:SetCore("SendNotification", {
+                    Title = "Hop Server", 
+                    Text = "Players: " ..tonumber(v.playing),
+                    Icon = "",
+                    Duration = 1.5
+                })
                 if tonumber(v.maxPlayers) > tonumber(v.playing) then
                     for _,Existing in pairs(AllIDs) do
                         if num ~= 0 then
