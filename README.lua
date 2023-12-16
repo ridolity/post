@@ -117,7 +117,7 @@ local Fox_Lamp_S = General_T:CreateSection({
     Side = 'Left'
 })
 Fox_Lamp_S:AddLabel({
-	Name = '🪄 Fox Lamp: ❌'
+	Name = '🌂 Fox Lamp: ❌'
 })
 Fox_Lamp_S:AddToggle({
 	Name = 'Auto Farm Fox Lamp',
