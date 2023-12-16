@@ -94,10 +94,54 @@ Status_S:AddLabel({
 local Status_Win = Status_S:AddLabel({
 	Name = 'Status: '
 })
--- Quest
-local Quest_S = General_T:CreateSection({
-    Name = " Quest ",
-    Side = 'Left'
+-- Status Full Moon
+local Notify_S = General_T:CreateSection({
+	Name = " Notify ",
+	Side = 'Left'
+})
+local Fullmoon_S = Notify_S:AddLabel({
+	Name = '🌕 Full Moon: '
+})
+local Mystic_S = Notify_S:AddLabel({
+	Name = '🌴 Mystic Island: not spawn.'
+})
+spawn(function()
+	while wait(1) do
+		pcall(function()
+			if Three_World then
+				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 100%'))
+				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 75%'))
+				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 50%'))
+				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 25%'))
+				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 15%'))
+				else 
+					Fullmoon_S:Set(tostring('🌕 Full Moon: 0%'))
+				end
+				if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    Mystic_S:Set('🌴 Mystic Island: ✅ spawn.') 
+				end
+				wait(10)
+			end
+		end)
+	end
+end)
+Notify_S:AddTextbox({
+	Name = 'Job Id',
+	Value = '...',
+	Callback = function(vu)
+		Job_Id = vu
+	end
+})
+Notify_S:AddButton({
+	Name = 'Join Server',
+	Callback = function()
+		game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport",Job_Id)
+	end
 })
 -- New
 local Level_S = General_T:CreateSection({
@@ -3187,9 +3231,6 @@ Race_S:AddToggle({
 		Auto_Farm_Ancient_One = vu
 	end
 })
-local Fullmoon_S = Race_S:AddLabel({
-    Name = '🌕 Full Moon: '
-})
 local An_One_S = Race_S:AddLabel({
     Name = '💥 Ancient One: '
 })
@@ -3411,9 +3452,6 @@ spawn(function()
 		end)
 	end
 end)
-local Mirage_Is = Gear_S:AddLabel({
-    Name = '🏝️ Mirage Island: '
-})
 local Mirror_S = Gear_S:AddLabel({
     Name = '🧩 Mirror Fractal: '
 })
@@ -3444,30 +3482,3 @@ if Three_World then
 		Pull_S:Set('🕹️ Pull Lever: ✅ succes')
 	end
 end
-spawn(function()
-	while wait(1) do
-		pcall(function()
-			if Three_World then
-				if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                    Mirage_Is:Set("🏝️ Mirage Island: ✅ spawn") 
-                else
-                    Mirage_Is:Set('🏝️ Mirage Island: wait spawn.')
-                end
-				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 100%'))
-				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 75%'))
-				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 50%'))
-				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 25%'))
-				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 15%'))
-				else 
-					Fullmoon_S:Set(tostring('🌕 Full Moon: 0%'))
-				end
-				wait(10)
-			end
-		end)
-	end
-end)
