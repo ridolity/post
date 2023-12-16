@@ -130,14 +130,18 @@ spawn(function()
 		end)
 	end
 end)
-Notify_S:AddTextbox({
+local Server_S = General_T:CreateSection({
+	Name = " Server ",
+	Side = 'Left'
+})
+Server_S:AddTextbox({
 	Name = 'Job Id',
 	Value = '...',
 	Callback = function(vu)
 		Job_Id = vu
 	end
 })
-Notify_S:AddButton({
+Server_S:AddButton({
 	Name = 'Join Server',
 	Callback = function()
 		game:GetService("ReplicatedStorage").__ServerBrowser:InvokeServer("teleport",Job_Id)
