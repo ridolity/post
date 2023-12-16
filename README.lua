@@ -2681,7 +2681,7 @@ end
 spawn(function()
 	game:GetService("RunService").Stepped:Connect(function()
 		pcall(function()
-			if comi or Auto_Farm_Trial or Auto_Farm_Ancient_One or Auto_Farm_Shark_Anchor or Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Farm_Level then
+			if comi or Auto_Fox_Lamp or Auto_Farm_Trial or Auto_Farm_Ancient_One or Auto_Farm_Shark_Anchor or Auto_Farm_Terror_Jaw or Auto_Farm_Shark_Tooth or Auto_Farm_Monster_Magnet or Farm_Level then
 				if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 					if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
 						if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true and not SitP and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Tooth and not Auto_Farm_Shark_Anchor and not Auto_Farm_Terror_Jaw then
