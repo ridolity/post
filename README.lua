@@ -2395,6 +2395,9 @@ spawn(function()
 							end
 						end
 					end
+				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
+					Status_Win:Set('Status: wait fullmoon 4/5 ')
+					wait(10)
 				else
 					Status_Win:Set('Status: wait fullmoon. ')
 					if Auto_Hop_Server then
