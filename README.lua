@@ -2606,122 +2606,124 @@ spawn(function()
 						end
 					end
 				end
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == 'FishBoat' and not Monster_Magnet_H or v.Name == 'PirateGrandBrigade' and not Monster_Magnet_H or v.Name == 'PirateBrigade' and not Monster_Magnet_H then
-						if v:FindFirstChild('Health') and v.Health.Value > 0 and (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 800 then
-							-- Aimbot
-							if TweenP == nil then
-							else
-								TweenP:Cancel()
-							end
-							wait(1)
-							Status_Win:Set('Status: Farm '..v.Name)
-							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-							wait(0.5)
-							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-							wait(0.5)
-							Farming_Tril = true
-							Attack = true
-							game.Players.LocalPlayer.Character.Humanoid.Sit = true
-							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-							end
-							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
-							local get_pless = true
-							PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
-							local check_1 = nil
-							local check_2 = nil
-							if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Melee']) and not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Melee']) then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+				if CheckItem_X("Fool's Gold") <= 19 then
+					for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+						if v.Name == 'FishBoat' and not Monster_Magnet_H or v.Name == 'PirateGrandBrigade' and not Monster_Magnet_H or v.Name == 'PirateBrigade' and not Monster_Magnet_H then
+							if v:FindFirstChild('Health') and v.Health.Value > 0 and (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 800 then
+								-- Aimbot
+								if TweenP == nil then
+								else
+									TweenP:Cancel()
+								end
 								wait(1)
-								Weapon = 'Sharkman Karate'
-							end
-							if game:GetService("Players").LocalPlayer.Data.Stats["Melee"].Level.Value >= 2000 then
-								if check_1 == nil then
-									check_1 = 'Melee'
-								elseif check_2 == nil then
-									check_2 = 'Melee'
+								Status_Win:Set('Status: Farm '..v.Name)
+								game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+								wait(0.5)
+								game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+								wait(0.5)
+								Farming_Tril = true
+								Attack = true
+								game.Players.LocalPlayer.Character.Humanoid.Sit = true
+								if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 								end
-							end
-							if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
-								if check_1 == nil then
-									check_1 = 'Sword'
-								elseif check_2 == nil then
-									check_2 = 'Sword'
+								local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+								local get_pless = true
+								PositionSkillMasteryDevilFruit = v.VehicleSeat.Position
+								local check_1 = nil
+								local check_2 = nil
+								if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Melee']) and not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Melee']) then
+									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+									wait(1)
+									Weapon = 'Sharkman Karate'
 								end
-							end
-							if game:GetService("Players").LocalPlayer.Data.Stats["Gun"].Level.Value >= 2000 then
-								if check_1 == nil then
-									check_1 = 'Gun'
-								elseif check_2 == nil then
-									check_2 = 'Gun'
+								if game:GetService("Players").LocalPlayer.Data.Stats["Melee"].Level.Value >= 2000 then
+									if check_1 == nil then
+										check_1 = 'Melee'
+									elseif check_2 == nil then
+										check_2 = 'Melee'
+									end
 								end
-							end
-							if game:GetService("Players").LocalPlayer.Data.Stats["Demon Fruit"].Level.Value >= 2000 then
-								if check_1 == nil then
-									check_1 = 'Blox Fruit'
-								elseif check_2 == nil then
-									check_2 = 'Blox Fruit'
+								if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
+									if check_1 == nil then
+										check_1 = 'Sword'
+									elseif check_2 == nil then
+										check_2 = 'Sword'
+									end
 								end
-							end 
-							spawn(function()
-								repeat wait(.1)
-									TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
-								until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
-							end)
-							local get_skill = {}
-							repeat wait(.2)
-								if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-									for ix,vx in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-										if vx:IsA('Tool') and tostring(vx.ToolTip) == check_1 or vx:IsA('Tool') and tostring(vx.ToolTip) == check_2 then
-											name_weapon = vx.Name
-											EquipWeapon(name_weapon)
-											if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-												game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-												wait(0.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-											end
-											if v.Health.Value > 0 and GetSkill_C(name_weapon,'Z') then
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-												game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
-												wait(.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-												wait()
-											end
-											if v.Health.Value > 0 and GetSkill_C(name_weapon,'X') then
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-												game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
-												wait(.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-												wait()
-											end
-											if v.Health.Value > 0 and GetSkill_C(name_weapon,'C') then
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-												game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
-												wait(.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-												wait()
-											end
-											if v.Health.Value > 0 and GetSkill_C(name_weapon,'V') then
-												PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
-												game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
-												wait(.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-												wait()
+								if game:GetService("Players").LocalPlayer.Data.Stats["Gun"].Level.Value >= 2000 then
+									if check_1 == nil then
+										check_1 = 'Gun'
+									elseif check_2 == nil then
+										check_2 = 'Gun'
+									end
+								end
+								if game:GetService("Players").LocalPlayer.Data.Stats["Demon Fruit"].Level.Value >= 2000 then
+									if check_1 == nil then
+										check_1 = 'Blox Fruit'
+									elseif check_2 == nil then
+										check_2 = 'Blox Fruit'
+									end
+								end 
+								spawn(function()
+									repeat wait(.1)
+										TP(v.VehicleSeat.CFrame*CFrame.new(0,10,0))
+									until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+								end)
+								local get_skill = {}
+								repeat wait(.2)
+									if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+										for ix,vx in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+											if vx:IsA('Tool') and tostring(vx.ToolTip) == check_1 or vx:IsA('Tool') and tostring(vx.ToolTip) == check_2 then
+												name_weapon = vx.Name
+												EquipWeapon(name_weapon)
+												if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+													wait(0.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+												end
+												if v.Health.Value > 0 and GetSkill_C(name_weapon,'Z') then
+													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													wait()
+												end
+												if v.Health.Value > 0 and GetSkill_C(name_weapon,'X') then
+													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													wait()
+												end
+												if v.Health.Value > 0 and GetSkill_C(name_weapon,'C') then
+													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+													wait()
+												end
+												if v.Health.Value > 0 and GetSkill_C(name_weapon,'V') then
+													PositionSkillMasteryDevilFruit = v.VehicleSeat.CFrame
+													game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+													wait(.5)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+													wait()
+												end
 											end
 										end
 									end
+								until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+								Attack = false
+							elseif (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 800 then
+								if TweenP == nil then
+								else
+									TweenP:Cancel()
 								end
-							until not v.Parent or tonumber(v.Health.Value) <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
-							Attack = false
-						elseif (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 800 then
-							if TweenP == nil then
-							else
-								TweenP:Cancel()
-							end
-							if Tween == nil then
-							else
-								Tween:Cancel()
+								if Tween == nil then
+								else
+									Tween:Cancel()
+								end
 							end
 						end
 					end
