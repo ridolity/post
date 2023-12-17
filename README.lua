@@ -2233,24 +2233,15 @@ spawn(function()
 							Monster_Magnet_H = true
 							local args = {
 								[1] = "CraftItem",
-								[2] = "PossibleHardcode",
+								[2] = "Check",
 								[3] = "SharkAnchor"
 							}
 							
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Check",
-								[3] = "MonsterMagnet"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
 							local args = {
 								[1] = "CraftItem",
 								[2] = "Craft",
-								[3] = "MonsterMagnet"
+								[3] = "SharkAnchor"
 							}
 							
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
