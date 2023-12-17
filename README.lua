@@ -2330,7 +2330,7 @@ spawn(function()
 					FarmLevel = false
 				end
 			elseif Auto_Fox_Lamp then
-				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" or game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
 					local Check_Boat_H = false 
 					for i,v in pairs(game.Workspace.Boats:GetChildren()) do
 						if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
