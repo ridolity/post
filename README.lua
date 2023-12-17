@@ -223,7 +223,7 @@ end
 -- -31612.23046875, 31.740503311157227, 1929.916259765625
 -- Buy Boat 
 -- -998.3510131835938, 4.5834879875183105, -14038.31640625
-setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
+--setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
 Update_New_S:AddToggle({
 	Name = 'Auto Farm Shark Anchor',
 	Enabled = _G.Setting['Shark Anchor'],
@@ -2530,7 +2530,7 @@ spawn(function()
 					end
 				end
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == 'FishBoat' or v.Name == 'PirateGrandBrigade' or v.Name == 'PirateBrigade' then
+					if v.Name == 'FishBoat' and not Monster_Magnet_H or v.Name == 'PirateGrandBrigade' and not Monster_Magnet_H or v.Name == 'PirateBrigade' and not Monster_Magnet_H then
 						if v:FindFirstChild('Health') and v.Health.Value > 0 and (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 800 then
 							-- Aimbot
 							if TweenP == nil then
