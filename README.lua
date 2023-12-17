@@ -2269,10 +2269,10 @@ spawn(function()
 				end
 				if Auto_Farm_Shark_Anchor then
 					if not Shark_Anchor_H then
-						if GetItem('Terror Jaw') then
+						if GetItem('Shark Anchor') then
 							Shark_Anchor_H = true
 							Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
-							Status_Win:Set(' Status: Succes. ✅')
+							Status_Win:Set('Status: Succes. ✅')
 							wait(1)
 						end
 					end
@@ -2282,7 +2282,7 @@ spawn(function()
 						Auto_Farm_Shark_Tooth = false
 						Auto_Farm_Shark_Anchor = false
 						Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
-						Status_Win:Set(' Status: Succes. ✅')
+						Status_Win:Set('Status: Succes. ✅')
 					end
 				end
 				if not Shark_Tooth_Necklace_H then
@@ -2384,10 +2384,16 @@ function Hop_Server()
         Bring()
     end
 end
+if _G.Setting['Sword Max Level'] == nil then
+	['Sword Max Level'] = {
+        ['Enabled'] = false,
+        ['Sword'] = 'Shark Anchor'
+    },
+end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
-			if Farm_Level then
+			if Farm_Level and not _G.Setting['Sword Max Level']['Enabled'] then
 				FarmLevel()	
 				if game.Players.LocalPlayer.Data.Level.Value >= _G.Setting['Level'] then
 					FarmLevel = false
@@ -2720,6 +2726,13 @@ spawn(function()
 						end
 					end
 				end
+			elseif _G.Setting['Sword Max Level']['Enabled'] then
+				if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Sword Max Level']['Sword']) and not not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Sword Max Level']['Sword']) then
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",tostring(_G.Setting['Sword Max Level']['Sword']))
+					wait(1)
+					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
+				end
+				FarmLevel()
 			end
 		end)
 	end
