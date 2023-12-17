@@ -410,7 +410,7 @@ function TPBoat(p,boat,speedx)
 end
 function TP(p)
 	local Distance = (p.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-	if Distance < 100 then
+	if Distance < 140 then
 		Speed = 1500
 	elseif Distance < 200 then
 		Speed = 150
@@ -2579,22 +2579,24 @@ spawn(function()
 							end
 							postis = 30
 							postx = 20
+							local hit = false
 							if v.Name == 'Terrorshark' then
 								postis = 30
 								postx = 50
+								hit = true
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
-								if percent <= 30 and v.Name == 'Terrorshark' then
+								if percent <= 40 and hit then
 									repeat wait(.2)
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,60))
-									until percent >= 40 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,130,0))
+									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
 									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,postis))
