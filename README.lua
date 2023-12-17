@@ -2193,8 +2193,35 @@ spawn(function()
 					if not Terror_Jaw_H then
 						if Shark_Tooth_I >= 5 and Fool_Gold_I >= 10 and Mutant_Tooth_I >= 2 and Terror_Eye_I >= 1 then
 							Terror_Jaw_H = true
-							-- Code Craft Terror Jaw
-							-- Succes Quest
+							local args = {
+								[1] = "CraftItem",
+								[2] = "PossibleHardcode",
+								[3] = "SharkAnchor"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							
+							local args = {
+								[1] = "CraftItem",
+								[2] = "Check",
+								[3] = "TerrorJaw"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							
+							local args = {
+								[1] = "CraftItem",
+								[2] = "Craft",
+								[3] = "TerrorJaw"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							wait(1)
+							if GetItem('Terror Jaw') then
+								Terror_Jaw_H = true
+								Terror_Jaw_S:Set('👓 Terror Jaw: ✅')
+								wait(1)
+							end
 						end
 					elseif Terror_Jaw_H then
 						Auto_Farm_Terror_Jaw = false
