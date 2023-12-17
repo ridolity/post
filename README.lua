@@ -2227,134 +2227,122 @@ spawn(function()
 					Mojis = '❌'
 				end
 				M_T_S:Set(Mojis..' Mutant Tooth: '..tostring(Mutant_Tooth_I)..'/1')
-				if Auto_Farm_Shark_Tooth then
-					if not Shark_Tooth_Necklace_H then
-						if Mutant_Tooth_I >= 1 and Shark_Tooth_I >= 5 then
-							local args = {
-								[1] = "CraftItem",
-								[2] = "PossibleHardcode",
-								[3] = "SharkAnchor"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Check",
-								[3] = "ToothNecklace"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Craft",
-								[3] = "ToothNecklace"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							wait(1)
-							if GetItem('Shark Tooth Necklace') then
-								Shark_Tooth_Necklace_H = true
-								Shark_Tooth_Necklace_S:Set('📿 Shark Tooth Necklace: ✅')
-								wait(1)
-							end
-							-- Code Craft Shark Tooth
-							-- Succes Quest
-						end
-					elseif Shark_Tooth_Necklace_H then
-						Auto_Farm_Terror_Jaw = false
+				if Shark_Tooth_Necklace_H then
+					Auto_Farm_Terror_Jaw = false
+					Shark_Tooth_Necklace_S:Set('📿 Shark Tooth Necklace: ✅')
+				elseif not Shark_Tooth_Necklace_H then
+					if Mutant_Tooth_I >= 1 and Shark_Tooth_I >= 5 then
+						local args = {
+							[1] = "CraftItem",
+							[2] = "PossibleHardcode",
+							[3] = "SharkAnchor"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Check",
+							[3] = "ToothNecklace"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Craft",
+							[3] = "ToothNecklace"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						wait(1)
+					end
+					if GetItem('Shark Tooth Necklace') then
+						Shark_Tooth_Necklace_H = true
 						Shark_Tooth_Necklace_S:Set('📿 Shark Tooth Necklace: ✅')
+						wait(1)
 					end
-				elseif Auto_Farm_Terror_Jaw then
-					if not Terror_Jaw_H then
-						if Shark_Tooth_I >= 5 and Fool_Gold_I >= 10 and Mutant_Tooth_I >= 2 and Terror_Eye_I >= 1 then
-							Terror_Jaw_H = true
-							local args = {
-								[1] = "CraftItem",
-								[2] = "PossibleHardcode",
-								[3] = "SharkAnchor"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Check",
-								[3] = "TerrorJaw"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Craft",
-								[3] = "TerrorJaw"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							wait(1)
-							if GetItem('Terror Jaw') then
-								Terror_Jaw_H = true
-								Terror_Jaw_S:Set('👓 Terror Jaw: ✅')
-								wait(1)
-							end
-						end
-					elseif Terror_Jaw_H then
-						Auto_Farm_Terror_Jaw = false
-						Terror_Jaw_S:Set('👓 Terror Jaw: ✅')
-					end
-				elseif Auto_Farm_Monster_Magnet then
-					if not Monster_Magnet_H then
-						if Terror_Eye_I >= 2 and Electric_Wings_I >= 8 and Fool_Gold_I >= 20 and Shark_Tooth_I >= 10 then 
-							Monster_Magnet_H = true
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Check",
-								[3] = "SharkAnchor"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							local args = {
-								[1] = "CraftItem",
-								[2] = "Craft",
-								[3] = "SharkAnchor"
-							}
-							
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-							wait(1)
-							if GetItem('Monster Magnet') then
-								Monster_Magnet_H = true
-								Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
-								Auto_Farm_Monster_Magnet = false
-								wait(1)
-							end
-						end
-					elseif Monster_Magnet_H then
-						Auto_Farm_Monster_Magnet = false
-						Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
-					end 
 				end
-				if Auto_Farm_Shark_Anchor then
-					if not Shark_Anchor_H then
-						if GetItem('Shark Anchor') then
-							Shark_Anchor_H = true
-							Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
-							Status_Win:Set('Status: Succes. ✅')
-							wait(1)
-						end
+				if Terror_Jaw_H then
+					Auto_Farm_Terror_Jaw = false
+					Terror_Jaw_S:Set('👓 Terror Jaw: ✅')
+				elseif not Terror_Jaw_H then
+					if Shark_Tooth_I >= 5 and Fool_Gold_I >= 10 and Mutant_Tooth_I >= 2 and Terror_Eye_I >= 1 then
+						local args = {
+							[1] = "CraftItem",
+							[2] = "PossibleHardcode",
+							[3] = "SharkAnchor"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Check",
+							[3] = "TerrorJaw"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Craft",
+							[3] = "TerrorJaw"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						wait(1)
 					end
-					if Shark_Anchor_H then
-						Auto_Farm_Terror_Jaw = false
-						Auto_Farm_Monster_Magnet = false
-						Auto_Farm_Shark_Tooth = false
-						Auto_Farm_Shark_Anchor = false
+					if GetItem('Terror Jaw') then
+						Terror_Jaw_H = true
+						Terror_Jaw_S:Set('👓 Terror Jaw: ✅')
+						wait(1)
+					end
+				end
+				if GetItem('Monster Magnet') then
+					Monster_Magnet_H = true
+					Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
+					Auto_Farm_Monster_Magnet = false
+					wait(1)
+				elseif GetItem('Monster Magnet') == false then
+					Monster_Magnet_H = false
+					Monster_Magnet_S:Set('🔥 Monster Magnet: ❌')
+					Auto_Farm_Monster_Magnet = true
+					if Terror_Eye_I >= 2 and Electric_Wings_I >= 8 and Fool_Gold_I >= 20 and Shark_Tooth_I >= 10 then 
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Check",
+							[3] = "SharkAnchor"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						local args = {
+							[1] = "CraftItem",
+							[2] = "Craft",
+							[3] = "SharkAnchor"
+						}
+						
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						wait(1)
+					end
+				end
+				if Shark_Anchor_H then
+					Auto_Farm_Terror_Jaw = false
+					Auto_Farm_Monster_Magnet = false
+					Auto_Farm_Shark_Tooth = false
+					Auto_Farm_Shark_Anchor = false
+					Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
+					Status_Win:Set('Status: Succes. ✅')
+					library.Notify({
+						Paused = true,
+						Text = 'Shark Anchor Succes. ✅'
+					})
+				elseif not Shark_Anchor_H then
+					if GetItem('Shark Anchor') or game.Players.LocalPlayer.Backpack:FindFirstChild('Shark Anchor')  then
+						Shark_Anchor_H = true
 						Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
 						Status_Win:Set('Status: Succes. ✅')
-						library.Notify({
-							Paused = true,
-							Text = 'Shark Anchor Succes. ✅'
-						})
+						wait(1)
 					end
 				end
 				if not Shark_Tooth_Necklace_H then
