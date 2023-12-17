@@ -2384,11 +2384,14 @@ function Hop_Server()
         Bring()
     end
 end
+if _G.Setting == nil then
+	_G.Setting = {}
+end
 if _G.Setting['Sword Max Level'] == nil then
-	['Sword Max Level'] = {
+	_G.Setting['Sword Max Level'] = {
         ['Enabled'] = false,
         ['Sword'] = 'Shark Anchor'
-    },
+    }
 end
 spawn(function()
 	while wait(.2) do
