@@ -2231,20 +2231,56 @@ spawn(function()
 					if not Monster_Magnet_H then
 						if Terror_Eye_I >= 2 and Electric_Wings_I >= 8 and Fool_Gold_I >= 20 and Shark_Tooth_I >= 10 then 
 							Monster_Magnet_H = true
-							-- Code Craft Monster Magnet
-							-- Succes Quest
+							local args = {
+								[1] = "CraftItem",
+								[2] = "PossibleHardcode",
+								[3] = "SharkAnchor"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							
+							local args = {
+								[1] = "CraftItem",
+								[2] = "Check",
+								[3] = "MonsterMagnet"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							
+							local args = {
+								[1] = "CraftItem",
+								[2] = "Craft",
+								[3] = "MonsterMagnet"
+							}
+							
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							wait(1)
+							if GetItem('Monster Magnet') then
+								Monster_Magnet_H = true
+								Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
+								Auto_Farm_Monster_Magnet = false
+								wait(1)
+							end
 						end
 					elseif Monster_Magnet_H then
 						Auto_Farm_Monster_Magnet = false
 						Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
 					end 
-				elseif Auto_Farm_Shark_Anchor then
+				end
+				if Auto_Farm_Shark_Anchor then
 					if not Shark_Anchor_H then
-						Shark_Anchor_H = true
-						-- Code Craft Monster Magnet
-						-- Succes Quest
-					elseif Shark_Anchor_H then
-						Auto_Farm_Shark_Anchor = true
+						if GetItem('Terror Jaw') then
+							Shark_Anchor_H = true
+							Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
+							Status_Win:Set(' Status: Succes. ✅')
+							wait(1)
+						end
+					end
+					if Shark_Anchor_H then
+						Auto_Farm_Terror_Jaw = false
+						Auto_Farm_Monster_Magnet = false
+						Auto_Farm_Shark_Tooth = false
+						Auto_Farm_Shark_Anchor = false
 						Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
 						Status_Win:Set(' Status: Succes. ✅')
 					end
