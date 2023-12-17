@@ -16,7 +16,84 @@ repeat wait(1)
 		click(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame)
 	end
 until game.Players.localPlayer.Neutral == false
+UserSettings():GetService("UserGameSettings").MasterVolume = 0
 
+UserSettings():GetService("UserGameSettings").SavedQualityLevel = 1
+if _G.Setting['FPS Booster'] then
+	game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = false
+	
+	shared.BC_1 = true
+	shared.BC_2 = nil
+
+	spawn(function()
+		while wait() do
+			if shared.BC_2 == true then
+				return
+			end
+			if shared.BC_1 and shared.BC_2 == nil then
+				L_1 = game:GetService("Workspace");
+				L_2 = game:GetService("Lighting");
+				L_3 = L_1.Terrain;
+				L_4 = game:GetService("Players");
+				L_5 = L_4.LocalPlayer.Character;
+				
+				L_3.WaterWaveSize = 0;L_3.WaterWaveSpeed = 0;L_3.WaterReflectance = 0;L_3.WaterTransparency = 0;
+				L_2.GlobalShadows = false;L_2.FogEnd = tonumber(9e9);L_2.Brightness = 0;
+				settings().Rendering.QualityLevel = "Level01";
+				settings().Rendering.GraphicsMode = "NoGraphics";
+				sethiddenproperty(L_2, "Technology", "Compatibility");
+				for i,v in pairs(L_1:GetDescendants()) do
+					if v.ClassName == "Part" or v.ClassName == "SpawnLocation" or v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
+						v.Material = "Plastic";v.Reflectance = 0;v.CastShadow = false;
+					elseif v.ClassName == "Decal" or v:IsA("Texture") then
+						v.Texture = 0;v.Transparency = 1;
+					elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+						v.LightInfluence = 0;v.Texture = 0;v.Lifetime = NumberRange.new(0);
+					elseif v:IsA("Explosion") then
+						v.BlastPressure = 0;v.BlastRadius = 0;
+					elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+						v.Enabled = false;
+					elseif v:IsA("MeshPart") then
+						v.Material = "Plastic";v.Reflectance = 0;v.TextureId = 0;v.CastShadow = false;v.RenderFidelity = Enum.RenderFidelity.Performance;
+					elseif v.ClassName == "SpecialMesh" then
+						v.TextureId = "rbxassetid://0";
+					elseif v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "Accessory" then
+						v:Destroy();
+					end
+				end
+				for i,v in pairs(L_2:GetDescendants()) do
+					if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+						v.Enabled = false;
+					end
+				end
+				for i,v in pairs(L_5:GetDescendants()) do
+					if v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "Accessory" then
+						v:Destroy();
+					end
+				end
+
+				if game.PlaceId == 2753915549 or 4442272183 or 7449423635 then -- Blox Fruits
+					if game:GetService("ReplicatedStorage").Effect.Container.Shared:FindFirstChild("AirDash") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Shared.AirDash:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Shared:FindFirstChild("LightningTP") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Shared.LightningTP:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Misc:FindFirstChild("Damage") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Misc.Damage:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Misc:FindFirstChild("Confetti") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Misc.Confetti:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("LevelUp") then
+						--game:GetService("ReplicatedStorage").Effect.Container.LevelUp:Destroy();
+					end
+				end
+				shared.BC_2 = true
+			end
+		end
+	end)
+end
 -- Gui
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Figger-2007/SwitchBF/main/xxpt.lua"))()
 
@@ -2274,6 +2351,10 @@ spawn(function()
 						Auto_Farm_Shark_Anchor = false
 						Shark_Anchor_S:Set("⚓ Shark Anchor: ✅")
 						Status_Win:Set('Status: Succes. ✅')
+						library.Notify({
+							Paused = true,
+							Text = 'Shark Anchor Succes. ✅'
+						})
 					end
 				end
 				if not Shark_Tooth_Necklace_H then
@@ -2557,6 +2638,7 @@ spawn(function()
 							if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Melee']) and not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Melee']) then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
 								wait(1)
+								Weapon = 'Sharkman Karate'
 							end
 							if game:GetService("Players").LocalPlayer.Data.Stats["Melee"].Level.Value >= 2000 then
 								if check_1 == nil then
@@ -2684,7 +2766,7 @@ spawn(function()
 										game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 										wait(0.5)
 									else
-										TPBoat(position_boat,v.VehicleSeat,100)
+										TPBoat(position_boat,v.VehicleSeat,150)
 									end
 								else
 									if TweenP ~= nil then
@@ -2726,6 +2808,39 @@ spawn(function()
 					wait(1)
 					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
 				end
+				if not Status_H then
+					if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
+						Status_H = true
+					end
+				end
+				if _G.Setting['Sword Max Level']['Restats'] == true and not Status_H then
+					if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value <= 2000 then
+						local I = {
+							Point = game:GetService("Players").LocalPlayer.Data.Points.Value
+						}
+						if not refunx and game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value < 2000 then
+							if game:GetService("Players").LocalPlayer.Data.StatRefunds.Value >= 1 then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("redeemRefundPoints","Refund Points")
+							elseif game:GetService("Players").LocalPlayer.Data.Points.Value == I.Point then
+								if game.Players.LocalPlayer.Data.Fragments.Value >= 2550 then
+									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+								end
+							else
+								refunx = true
+							end
+							if game:GetService("Players").LocalPlayer.Data.Points.Value > 0 and game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value < 2550 then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", "Sword", game:GetService("Players").LocalPlayer.Data.Points.Value)
+								wait(1)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", "Melee", game:GetService("Players").LocalPlayer.Data.Points.Value)
+								wait(1)
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", "Defense", game:GetService("Players").LocalPlayer.Data.Points.Value)
+							elseif game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
+								Status_H = true
+							end
+						end
+					end
+				end
 				FarmLevel()
 			end
 		end)
@@ -2735,6 +2850,19 @@ end)
 local Setting_S = General_T:CreateSection({
     Name = " Setting ",
     Side = 'Right'
+})
+Setting_S:AddToggle({
+	Name = 'White Screen',
+	KeyBind = Enum.KeyCode.Y,
+	Enabled = _G.Setting['White Screen'],
+	Callback = function(vu)
+		_G.Setting['White Screen'] = vu
+		if _G.Setting['White Screen'] then
+			game:GetService("RunService"):Set3dRenderingEnabled(false)
+		else
+			game:GetService("RunService"):Set3dRenderingEnabled(true)
+		end
+	end
 })
 local ToolM = {}
 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -3559,3 +3687,16 @@ if Three_World then
 		Pull_S:Set('🕹️ Pull Lever: ✅ succes')
 	end
 end
+
+spawn(function()
+    if _G.Main['Close Ui'] == true then
+        if game:GetService("CoreGui"):FindFirstChild("     ") and game:GetService("CoreGui")["     "].main.Visible == true then
+            repeat wait()
+                game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
+                wait(0.5)
+                game:service('VirtualInputManager'):SendKeyEvent(false, "LeftShift", false, game)
+                wait(0.5)
+            until game:GetService("CoreGui")["     "].main.Visible == false
+        end
+    end
+end)
