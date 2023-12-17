@@ -2566,7 +2566,7 @@ spawn(function()
 				local Farming_Tril = false
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' then
-						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
+						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
 							if TweenP == nil then
 							else
