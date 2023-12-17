@@ -2795,10 +2795,10 @@ spawn(function()
 					end
 				end
 			elseif _G.Setting['Sword Max Level']['Enabled'] then
-				if not game.Players.LocalPlayer.Backpack:FindFirstChild(_G.Setting['Sword Max Level']['Sword']) and not not game.Players.LocalPlayer.Character:FindFirstChild(_G.Setting['Sword Max Level']['Sword']) then
+				if not Shark_Anchor_M and GetItem(tostring(_G.Setting['Sword Max Level']['Sword'])) then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",tostring(_G.Setting['Sword Max Level']['Sword']))
-					wait(1)
 					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
+					Shark_Anchor_M = true
 				end
 				if not Status_H then
 					if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
