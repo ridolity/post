@@ -2324,6 +2324,12 @@ spawn(function()
 						
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 						wait(1)
+						if GetItem('Monster Magnet') then
+							Monster_Magnet_H = true
+							Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
+							Auto_Farm_Monster_Magnet = false
+							wait(1)
+						end
 					end
 				end
 				if Shark_Anchor_H then
