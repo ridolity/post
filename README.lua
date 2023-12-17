@@ -2299,12 +2299,12 @@ spawn(function()
 						wait(1)
 					end
 				end
-				if CheckItem_X('Monster Magnet') then
+				if CheckItem_X('Monster Magnet') >= 1 then
 					Monster_Magnet_H = true
 					Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
 					Auto_Farm_Monster_Magnet = false
 					wait(1)
-				elseif CheckItem_X('Monster Magnet') == false then
+				elseif CheckItem_X('Monster Magnet') == 0 then
 					Monster_Magnet_H = false
 					Monster_Magnet_S:Set('🔥 Monster Magnet: ❌')
 					Auto_Farm_Monster_Magnet = true
@@ -2324,7 +2324,7 @@ spawn(function()
 						
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 						wait(1)
-						if CheckItem_X('Monster Magnet') then
+						if CheckItem_X('Monster Magnet') >= 1 then
 							Monster_Magnet_H = true
 							Monster_Magnet_S:Set('🔥 Monster Magnet: ✅')
 							Auto_Farm_Monster_Magnet = false
