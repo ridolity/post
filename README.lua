@@ -2742,9 +2742,8 @@ spawn(function()
 							if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
 								TweenP:Cancel()
 								wait(1.5)
-								local get_cframe = position_boat
-								position_boat = CFrame.new(get_cframe.Position.X-2000, 40.741893768310547, -658.2794799804688)
-								--[[
+								--local get_cframe = position_boat
+								--position_boat = CFrame.new(get_cframe.Position.X-2000, 40.741893768310547, -658.2794799804688)
 								if (position_boat.Position-Vector3.new(-30887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
 									position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
 								elseif (position_boat.Position-Vector3.new(-38887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
@@ -2757,7 +2756,6 @@ spawn(function()
 								game.Players.LocalPlayer.Character.Humanoid.Sit = true
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
 								wait(0.5)
-								]]
 							elseif (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 7000 then 
 								if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
 									if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 13 then
