@@ -2595,7 +2595,55 @@ spawn(function()
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,130,0))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,50))
+									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+								else
+									EquipWeapon(Weapon)
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,postis))
+								end
+							until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
+							Attack = false
+						end
+					end
+				end
+				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+					if v.Name == 'Terrorshark' then
+						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
+							Status_Win:Set('Status: Farm '..v.Name)
+							if TweenP == nil then
+							else
+								TweenP:Cancel()
+							end
+							wait(1)
+							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+							wait(0.5)
+							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+							wait(0.5)
+							Farming_Tril = true
+							Attack = true
+							game.Players.LocalPlayer.Character.Humanoid.Sit = true
+							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+							end
+							postis = 30
+							postx = 20
+							local hit = false
+							if v.Name == 'Terrorshark' then
+								postis = 30
+								postx = 50
+								hit = true
+							end
+							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+							local get_pless = true
+							repeat wait(.2)
+								local health = game.Players.LocalPlayer.Character.Humanoid.Health
+								local percent = (health / maxhealth) * 100
+								if percent <= 40 and hit then
+									repeat wait(.2)
+										local health = game.Players.LocalPlayer.Character.Humanoid.Health
+										local percent = (health / maxhealth) * 100
+										EquipWeapon(Weapon)
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,50))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
