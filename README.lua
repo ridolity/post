@@ -2562,12 +2562,7 @@ spawn(function()
 					if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
-							--[[
-							if TweenP == nil then
-							else
-								TweenP:Cancel()
-							end
-							]]
+							TPBoat(position_boat,v.VehicleSeat,200)
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
@@ -2582,8 +2577,8 @@ spawn(function()
 							postx = 20
 							local hit = false
 							if v.Name == 'Terrorshark' then
-								postis = 30
-								postx = 50
+								postis = 50
+								postx = 30
 								hit = true
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
@@ -2595,8 +2590,7 @@ spawn(function()
 									repeat wait(.2)
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
-										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,0))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
@@ -2611,12 +2605,7 @@ spawn(function()
 					if v.Name == 'Terrorshark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
-							--[[
-							if TweenP == nil then
-							else
-								TweenP:Cancel()
-							end
-							]]
+							TPBoat(position_boat,v.VehicleSeat,200)
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
@@ -2631,8 +2620,8 @@ spawn(function()
 							postx = 20
 							local hit = false
 							if v.Name == 'Terrorshark' then
-								postis = 30
-								postx = 50
+								postis = 50
+								postx = 30
 								hit = true
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
@@ -2644,8 +2633,7 @@ spawn(function()
 									repeat wait(.2)
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
-										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,0))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
