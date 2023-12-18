@@ -2586,7 +2586,7 @@ spawn(function()
 								hit = true
 								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
 									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-										v:Destroy()
+										vxx:Destroy()
 									end
 								end
 							end
@@ -2639,7 +2639,7 @@ spawn(function()
 								hit = true
 								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
 									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-										v:Destroy()
+										vxx:Destroy()
 									end
 								end
 							end
