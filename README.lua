@@ -2790,10 +2790,22 @@ spawn(function()
 								wait(1.5)
 								--local get_cframe = position_boat
 								--position_boat = CFrame.new(get_cframe.Position.X-2000, 40.741893768310547, -658.2794799804688)
-								if (position_boat.Position-Vector3.new(-30887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-									position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
-								elseif (position_boat.Position-Vector3.new(-38887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-									position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+								if Monster_Magnet_H then
+									if (position_boat.Position-Vector3.new(-39887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-45887.2265625, 40.741893768310547, -658.2794799804688)
+									elseif (position_boat.Position-Vector3.new(-45887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-39887.2265625, 40.741893768310547, -658.2794799804688)
+									else
+										position_boat = CFrame.new(-39887.2265625, 40.741893768310547, -658.2794799804688)
+									end
+								else
+									if (position_boat.Position-Vector3.new(-30887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
+									elseif (position_boat.Position-Vector3.new(-38887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+									else
+										position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+									end
 								end
 								game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 								wait(0.5)
