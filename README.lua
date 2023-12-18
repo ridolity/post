@@ -2595,7 +2595,7 @@ spawn(function()
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,50))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,100))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
@@ -2643,7 +2643,7 @@ spawn(function()
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,50))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,100))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
@@ -3733,7 +3733,7 @@ if Three_World then
 end
 
 spawn(function()
-    if _G.Main['Close Ui'] == true then
+    if _G.Setting['Close Ui'] == true then
         if game:GetService("CoreGui"):FindFirstChild("     ") and game:GetService("CoreGui")["     "].main.Visible == true then
             repeat wait()
                 game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
