@@ -2584,11 +2584,6 @@ spawn(function()
 								postis = 30
 								postx = 50
 								hit = true
-								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
-									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-										vxx:Destroy()
-									end
-								end
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
@@ -2600,7 +2595,7 @@ spawn(function()
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,100))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,0))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
@@ -2637,11 +2632,6 @@ spawn(function()
 								postis = 30
 								postx = 50
 								hit = true
-								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
-									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-										vxx:Destroy()
-									end
-								end
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
@@ -2653,7 +2643,7 @@ spawn(function()
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
 										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,170,100))
+										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,0))
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
