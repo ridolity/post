@@ -2584,6 +2584,11 @@ spawn(function()
 								postis = 30
 								postx = 50
 								hit = true
+								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
+									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+										v:Destroy()
+									end
+								end
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
@@ -2632,6 +2637,11 @@ spawn(function()
 								postis = 30
 								postx = 50
 								hit = true
+								for ix,vxx in pairs(game.Workspace.Boats:GetChildren()) do
+									if vxx.Name == _G.Setting['Boat'] and vxx:FindFirstChild('Owner') and tostring(vxx.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+										v:Destroy()
+									end
+								end
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
