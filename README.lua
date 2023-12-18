@@ -2562,11 +2562,12 @@ spawn(function()
 					if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
+							--[[
 							if TweenP == nil then
 							else
 								TweenP:Cancel()
 							end
-							wait(1)
+							]]
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
@@ -2610,11 +2611,12 @@ spawn(function()
 					if v.Name == 'Terrorshark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
+							--[[
 							if TweenP == nil then
 							else
 								TweenP:Cancel()
 							end
-							wait(1)
+							]]
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
