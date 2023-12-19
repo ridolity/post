@@ -2623,7 +2623,7 @@ spawn(function()
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
-									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,postis))
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,50))
 								end
 							until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							Attack = false
@@ -2671,7 +2671,7 @@ spawn(function()
 									until percent >= 50 or  not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 								else
 									EquipWeapon(Weapon)
-									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,postis))
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,50))
 								end
 							until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Terror_Jaw and not Auto_Farm_Shark_Tooth and not Auto_Farm_Monster_Magnet and not Auto_Farm_Shark_Anchor 
 							Attack = false
