@@ -105,6 +105,22 @@ local PepsisWorld = library:CreateWindow({
 local General_T = PepsisWorld:CreateTab({
 	Name = "General"
 })
+local ToolM = {}
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+	if v:IsA('Tool') and not table.find(ToolM,v.Name) then
+		table.insert(ToolM,v.Name)
+	end
+end
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+	if v:IsA('Tool') and not table.find(ToolM,v.Name) then
+		table.insert(ToolM,v.Name)
+	end
+end
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+	if v:IsA('Tool') and tostring(v.ToolTip) == 'Melee' then
+		Weapon = v.Name
+	end
+end
 local Time_S = General_T:CreateSection({
 	Name = " Time ",
 	Side = 'Left'
@@ -2459,6 +2475,14 @@ if _G.Setting['Sword Max Level'] == nil then
         ['Sword'] = 'Shark Anchor'
     }
 end
+function Check_Boat_Spawn()
+	for i,v in pairs(game.Workspace.Boats:GetChildren()) do
+		if v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+			return true
+		end
+	end
+	return false
+end
 spawn(function()
 	while wait(.2) do
 		pcall(function()
@@ -2577,12 +2601,17 @@ spawn(function()
 							postx = 20
 							local hit = false
 							if v.Name == 'Terrorshark' then
-								postis = 50
-								postx = 30
+								postis = 30
+								postx = 50
 								hit = true
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
+							if Check_Boat_Spawn() == true then
+								repeat wait(.5)
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
+								until Check_Boat_Spawn() == false
+							end
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
@@ -2620,12 +2649,17 @@ spawn(function()
 							postx = 20
 							local hit = false
 							if v.Name == 'Terrorshark' then
-								postis = 50
-								postx = 30
+								postis = 30
+								postx = 50
 								hit = true
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
+							if Check_Boat_Spawn() == true then
+								repeat wait(.5)
+									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
+								until Check_Boat_Spawn() == false
+							end
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
@@ -2910,22 +2944,6 @@ Setting_S:AddToggle({
 		end
 	end
 })
-local ToolM = {}
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-	if v:IsA('Tool') and not table.find(ToolM,v.Name) then
-		table.insert(ToolM,v.Name)
-	end
-end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-	if v:IsA('Tool') and not table.find(ToolM,v.Name) then
-		table.insert(ToolM,v.Name)
-	end
-end
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-	if v:IsA('Tool') and tostring(v.ToolTip) == 'Melee' then
-		Weapon = v.Name
-	end
-end
 local Weapon_Select_T = Setting_S:AddDropdown({
 	Name = ' Select Weapon ',
 	List = ToolM,
