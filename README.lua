@@ -2813,12 +2813,12 @@ spawn(function()
 										position_boat = CFrame.new(-39887.2265625, 40.741893768310547, -658.2794799804688)
 									end
 								else
-									if (position_boat.Position-Vector3.new(-30887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-										position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
-									elseif (position_boat.Position-Vector3.new(-38887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-										position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+									if (position_boat.Position-Vector3.new(-27887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-35887.2265625, 40.741893768310547, -658.2794799804688)
+									elseif (position_boat.Position-Vector3.new(-35887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+										position_boat = CFrame.new(-27887.2265625, 40.741893768310547, -658.2794799804688)
 									else
-										position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+										position_boat = CFrame.new(-27887.2265625, 40.741893768310547, -658.2794799804688)
 									end
 								end
 								game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
