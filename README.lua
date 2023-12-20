@@ -2607,11 +2607,6 @@ spawn(function()
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
-							if Check_Boat_Spawn() == true then
-								repeat wait(.5)
-									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
-								until Check_Boat_Spawn() == false
-							end
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
@@ -2655,11 +2650,6 @@ spawn(function()
 							end
 							local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 							local get_pless = true
-							if Check_Boat_Spawn() == true then
-								repeat wait(.5)
-									TP(v.HumanoidRootPart.CFrame*CFrame.new(0,250,50))
-								until Check_Boat_Spawn() == false
-							end
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
