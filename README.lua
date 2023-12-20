@@ -2805,12 +2805,12 @@ spawn(function()
 								--local get_cframe = position_boat
 								--position_boat = CFrame.new(get_cframe.Position.X-2000, 40.741893768310547, -658.2794799804688)
 								if Monster_Magnet_H then
-									if (position_boat.Position-Vector3.new(-39887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+									if (position_boat.Position-Vector3.new(-40887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
 										position_boat = CFrame.new(-45887.2265625, 40.741893768310547, -658.2794799804688)
 									elseif (position_boat.Position-Vector3.new(-45887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-										position_boat = CFrame.new(-39887.2265625, 40.741893768310547, -658.2794799804688)
+										position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
 									else
-										position_boat = CFrame.new(-39887.2265625, 40.741893768310547, -658.2794799804688)
+										position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
 									end
 								else
 									if (position_boat.Position-Vector3.new(-27887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
