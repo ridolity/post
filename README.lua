@@ -2586,14 +2586,14 @@ spawn(function()
 					if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
-							TPBoat(position_boat,v.VehicleSeat,200)
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 							wait(0.5)
+							game.Players.LocalPlayer.Character.Humanoid.Sit = true
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
 							Farming_Tril = true
 							Attack = true
-							game.Players.LocalPlayer.Character.Humanoid.Sit = true
 							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 							end
@@ -2634,14 +2634,14 @@ spawn(function()
 					if v.Name == 'Terrorshark' then
 						if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 							Status_Win:Set('Status: Farm '..v.Name)
-							TPBoat(position_boat,v.VehicleSeat,200)
 							game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
 							wait(0.5)
 							game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 							wait(0.5)
+							game.Players.LocalPlayer.Character.Humanoid.Sit = true
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
 							Farming_Tril = true
 							Attack = true
-							game.Players.LocalPlayer.Character.Humanoid.Sit = true
 							if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 							end
