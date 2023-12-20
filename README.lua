@@ -2877,6 +2877,9 @@ spawn(function()
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",tostring(_G.Setting['Sword Max Level']['Sword']))
 					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
 					Shark_Anchor_M = true
+				elseif not Shark_Anchor_M then
+					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
+					Shark_Anchor_M = true
 				end
 				if not Status_H then
 					if game:GetService("Players").LocalPlayer.Data.Stats["Sword"].Level.Value >= 2000 then
