@@ -2796,7 +2796,7 @@ spawn(function()
 						if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
 							Check_Boat_H = true
 							if position_boat == nil then
-								position_boat = CFrame.new(-30887.2265625, 40.741893768310547, -658.2794799804688)
+								position_boat = CFrame.new(-27887.2265625, 40.741893768310547, -658.2794799804688)
 							end
 							Status_Win:Set('Status: Go to monster.')
 							if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
