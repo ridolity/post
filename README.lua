@@ -2610,7 +2610,7 @@ spawn(function()
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
-								if percent <= 60 and hit then
+								if percent <= 50 and hit then
 									repeat wait(.2)
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
@@ -2653,7 +2653,7 @@ spawn(function()
 							repeat wait(.2)
 								local health = game.Players.LocalPlayer.Character.Humanoid.Health
 								local percent = (health / maxhealth) * 100
-								if percent <= 60 and hit then
+								if percent <= 50 and hit then
 									repeat wait(.2)
 										local health = game.Players.LocalPlayer.Character.Humanoid.Health
 										local percent = (health / maxhealth) * 100
