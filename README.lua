@@ -3746,7 +3746,7 @@ if Three_World then
 end
 
 spawn(function()
-    if _G.Setting['Close Ui'] == true then
+    if _G.Setting['Close Gui'] == true then
         if game:GetService("CoreGui"):FindFirstChild("     ") and game:GetService("CoreGui")["     "].main.Visible == true then
             repeat wait()
                 game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
@@ -3756,4 +3756,17 @@ spawn(function()
             until game:GetService("CoreGui")["     "].main.Visible == false
         end
     end
+end)
+-- Rejoin
+spawn(function()
+	while wait() do
+		if _G.Setting['Rejoin'] then
+			game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+				if not Hop_S and child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+					game:GetService("TeleportService"):Teleport(game.PlaceId)
+					wait(50)
+				end
+			end)
+		end
+	end
 end)
