@@ -3759,7 +3759,7 @@ spawn(function()
 end)
 -- Rejoin
 spawn(function()
-	while wait() do
+	while wait(5) do
 		if _G.Setting['Rejoin'] then
 			game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 				if not Hop_S and child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
