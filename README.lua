@@ -9949,7 +9949,7 @@ spawn(function()
 						end
 					end
 				end
-			elseif _G.Setting['Sword Max Level']['Enabled'] then
+			elseif _G.Setting['Sword Max Level']['Enabled'] and Farm_Level then
 				if not Shark_Anchor_M and GetItem(tostring(_G.Setting['Sword Max Level']['Sword'])) then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",tostring(_G.Setting['Sword Max Level']['Sword']))
 					Weapon = tostring(_G.Setting['Sword Max Level']['Sword'])
