@@ -7532,55 +7532,59 @@ function TPZ(p,speedx)
 	Tween:Play()
 end
 function TPX(RealTarget)
-	pcall(function()
-		local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
-		if Distance < 100 then
-			Speed = 1500
-		elseif Distance < 200 then
-			Speed = 1200
-		elseif Distance < 500 then
-			Speed = 515
-		elseif Distance < 1000 then
-			Speed = 315
-		elseif Distance >= 1000 then
-			Speed = 300
+	local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
+	if Distance < 100 then
+		Speed = 1500
+	elseif Distance < 200 then
+		Speed = 1200
+	elseif Distance < 500 then
+		Speed = 515
+	elseif Distance < 1000 then
+		Speed = 315
+	elseif Distance >= 1000 then
+		Speed = 300
+	end
+	if Distance > 3000 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+		if game.Players.LocalPlayer.Character:FindFirstChild('Humanoid') and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+			game:GetService("Players").LocalPlayer.Character:WaitForChild("Head"):Destroy()
+			game.Players.LocalPlayer.Character.Humanoid.Health = 0
+			wait(.5)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+			wait(7)
+			--[[
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
+			wait(.5)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+			game.Players.LocalPlayer.Character.Humanoid.Health = 0
+			wait(7)
+			]]
 		end
-		if Distance > 3000 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-			if game.Players.LocalPlayer.Character:FindFirstChild('Humanoid') and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-				game:GetService("Players").LocalPlayer.Character:WaitForChild("Head"):Destroy()
+		--[[
+		if (Vector3.new(-5075.13525390625, 314.941162109375, -2886.742919921875)-RealTarget.Position).Magnitude <= 2000 then
+			local args = {
+				[1] = "requestEntrance",
+				[2] = Vector3.new(-5089.66455078125, 318.5023193359375, -3146.126708984375)
+			}
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+			wait(1)
+		else
+			if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
 				game.Players.LocalPlayer.Character.Humanoid.Health = 0
+				game.Players.LocalPlayer.Character.Head:Destroy()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
 				wait(.5)
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
 				wait(7)
 			end
-			--[[
-			if (Vector3.new(-5075.13525390625, 314.941162109375, -2886.742919921875)-RealTarget.Position).Magnitude <= 2000 then
-				local args = {
-					[1] = "requestEntrance",
-					[2] = Vector3.new(-5089.66455078125, 318.5023193359375, -3146.126708984375)
-				}
-	-35887.2265625, 31.741893768310547, -658.2794799804688
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				wait(1)
-			else
-				if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-					game.Players.LocalPlayer.Character.Humanoid.Health = 0
-					game.Players.LocalPlayer.Character.Head:Destroy()
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
-					wait(.5)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
-					wait(7)
-				end
-			end
-			]]
-		elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-			local Tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),{CFrame = RealTarget})
-			Tween:Play()
 		end
-	end)
+		]]
+	elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+		local Tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),{CFrame = RealTarget})
+		Tween:Play()
+	end
 end
 -- Pikat 4 Terrorshark piranha shark 'Fish Crew Member'
 -- 
