@@ -6,7 +6,7 @@ elseif placeId == 4442272183 then
 elseif placeId == 7449423635 then
 	Three_World = true
 end
-print('xppt32')
+print('xppt34')
 local function click(a)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,true,a,1)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,false,a,1)
@@ -7547,8 +7547,8 @@ function TPX(RealTarget)
 	if Distance > 3000 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
 		if game.Players.LocalPlayer.Character:FindFirstChild('Humanoid') and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
 			game:GetService("Players").LocalPlayer.Character:WaitForChild("Head"):Destroy()
-			game.Players.LocalPlayer.Character.Humanoid.Health = 0
-			wait(.5)
+			--game.Players.LocalPlayer.Character.Humanoid.Health = 0
+			--wait(.5)
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget 
 			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
 			wait(7)
