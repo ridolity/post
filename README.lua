@@ -6,7 +6,7 @@ elseif placeId == 4442272183 then
 elseif placeId == 7449423635 then
 	Three_World = true
 end
-print('xppt')
+print('xppt32')
 local function click(a)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,true,a,1)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,false,a,1)
@@ -9025,7 +9025,7 @@ function FarmLevel()
 						if v.Name == NameMon and not game.Workspace.Enemies:FindFirstChild(Ms) and not game.ReplicatedStorage:FindFirstChild(Ms) then
 							repeat wait(.1)
 								TPX(v.CFrame*CFrame.new(0,15,0))
-							until Start_Farm_Mastery_Gun or (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 16 or game.Workspace.Enemies:FindFirstChild(Ms) or game.ReplicatedStorage:FindFirstChild(Ms)
+							until not Farm_Level or (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 16 or game.Workspace.Enemies:FindFirstChild(Ms) or game.ReplicatedStorage:FindFirstChild(Ms)
 						end
 					end
 				else
@@ -9045,7 +9045,7 @@ function FarmLevel()
 								TPX(v.HumanoidRootPart.CFrame * CFrame.new(0, 20, 0))
 							end
 							EquipWeapon(Weapon)
-						until not v.Parent or v.Humanoid.Health <= 0 or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not Farm_Level or Start_Farm_Mastery_Gun or Start_Farm_Mastery_Fruit 
+						until not v.Parent or v.Humanoid.Health <= 0 or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not Farm_Level 
 						TPX(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
 						StatrMagnet = false
 					end
