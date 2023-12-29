@@ -9576,7 +9576,7 @@ spawn(function()
 					for each in x:gmatch(regex) do
 						table.insert(result, each)
 					end
-					if tonumber(result[1]) >= 0 and tonumber(result[1]) < 5 or tonumber(result[1]) >= 13 and tonumber(result[1]) <= 23 then
+					if tonumber(result[1]) >= 0 and tonumber(result[1]) < 5 or tonumber(result[1]) >= 9 and tonumber(result[1]) <= 20 then
 						local Check_Boat_H = false 
 						for i,v in pairs(game.Workspace.Boats:GetChildren()) do
 							if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
@@ -9607,7 +9607,7 @@ spawn(function()
 											game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
 											wait(0.5)
 										else
-											TPBoat(position_boat,v.VehicleSeat,120)
+											TPBoat(position_boat,v.VehicleSeat,180)
 											game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
 										end
 									else
