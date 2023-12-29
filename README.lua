@@ -9468,7 +9468,7 @@ function GetSkill_C(NameW,Skill)
 	return false
 end
 if _G.Setting['Boat'] == nil then
-	_G.Setting['Boat'] = 'PirateGrandBrigade'
+	_G.Setting['Boat'] = 'PirateBrigade'
 end
 function Hop_Server()
     if not TP_Ser then
@@ -9569,70 +9569,82 @@ spawn(function()
 					FarmLevel = false
 				end
 			elseif Auto_Fox_Lamp then
-				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" or game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
-					local Check_Boat_H = false 
-					for i,v in pairs(game.Workspace.Boats:GetChildren()) do
-						if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-							Check_Boat_H = true
-							if position_boat == nil then
-								position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
-							end
-							Status_Win:Set('Status: Go to fox island.')
-							if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
-								TweenP:Cancel()
-								wait(1)
-								local get_cframe = position_boat
-								position_boat = CFrame.new(get_cframe.Position.X-1500, 40.741893768310547, -658.2794799804688)
-								--[[
-								game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-								wait(0.5)
-								game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-								wait(0.5)
-								game.Players.LocalPlayer.Character.Humanoid.Sit = true
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
-								wait(0.5)
-								]]
-							elseif (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 7000 then 
-								if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-									if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 13 then
-										game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-										wait(0.5)
-										game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-										wait(0.5)
-									else
-										TPBoat(position_boat,v.VehicleSeat,120)
-									end
-								else
-									if TweenP ~= nil then
-										TweenP:Cancel()
-									end
-									TPZ(v.VehicleSeat.CFrame,150) 
-								end
-							elseif (v.VehicleSeat.Position-position_boat.Position).Magnitude > 7000 then
-								TPBoat(position_boat*CFrame.new(0,50,0),v.VehicleSeat,250)
-								wait(1)
-								TPZ(position_boat*CFrame.new(0,50,0),200) 
-							end
-						end
+				if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+					local result = {}
+					local x = tostring(game:GetService("Lighting").TimeOfDay)
+					local regex = ("([^%s]+)"):format(":")
+					for each in x:gmatch(regex) do
+						table.insert(result, each)
 					end
-					if not Check_Boat_H then
-						if not Farming_Tril then
-							if not Check_Boat_H then
-								Status_Win:Set('Status: Get boat.')
-								if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude <= 10 then
+					if tonumber(result[1]) >= 0 and tonumber(result[1]) < 5 or tonumber(result[1]) >= 13 and tonumber(result[1]) <= 23 then
+						local Check_Boat_H = false 
+						for i,v in pairs(game.Workspace.Boats:GetChildren()) do
+							if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+								Check_Boat_H = true
+								if position_boat == nil then
+									position_boat = CFrame.new(-38887.2265625, 40.741893768310547, -658.2794799804688)
+								end
+								Status_Win:Set('Status: Go to fox island.')
+								if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
+									TweenP:Cancel()
 									wait(1)
-									local args = {
-										[1] = "BuyBoat",
-										[2] = _G.Setting['Boat']
-									}
-									
-									game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+									local get_cframe = position_boat
+									position_boat = CFrame.new(get_cframe.Position.X-1500, 40.741893768310547, -658.2794799804688)
+									--[[
+									game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+									wait(0.5)
+									game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+									wait(0.5)
+									game.Players.LocalPlayer.Character.Humanoid.Sit = true
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
+									wait(0.5)
+									]]
+								elseif (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 7000 then 
+									if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+										if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 13 then
+											game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+											wait(0.5)
+											game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+											wait(0.5)
+										else
+											TPBoat(position_boat,v.VehicleSeat,120)
+											game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+										end
+									else
+										if TweenP ~= nil then
+											TweenP:Cancel()
+										end
+										TPZ(v.VehicleSeat.CFrame,150)
+									end
+								elseif (v.VehicleSeat.Position-position_boat.Position).Magnitude > 7000 then
+									TPBoat(position_boat*CFrame.new(0,50,0),v.VehicleSeat,250)
 									wait(1)
-								elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude > 10 then
-									TPX(CFrame.new(-998.3510131835938, 4.5834879875183105, -14038.31640625))
+									TPZ(position_boat*CFrame.new(0,50,0),200) 
 								end
 							end
 						end
+						if not Check_Boat_H then
+							if not Farming_Tril then
+								if not Check_Boat_H then
+									Status_Win:Set('Status: Get boat.')
+									if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude <= 10 then
+										wait(1)
+										local args = {
+											[1] = "BuyBoat",
+											[2] = _G.Setting['Boat']
+										}
+										
+										game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+										wait(1)
+									elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude > 10 then
+										TPX(CFrame.new(-998.3510131835938, 4.5834879875183105, -14038.31640625))
+									end
+								end
+							end
+						end
+					else
+						Status_Win:Set('Status: waiting for the night. ')
+						wait(10)
 					end
 				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
 					Status_Win:Set('Status: wait fullmoon 4/5 ')
