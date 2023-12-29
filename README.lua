@@ -9608,7 +9608,7 @@ spawn(function()
 											wait(0.5)
 										else
 											TPBoat(position_boat,v.VehicleSeat,120)
-											game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+											game:service('VirtualInputManager'):SendKeyEvent(true, "W", false, game)
 										end
 									else
 										if TweenP ~= nil then
