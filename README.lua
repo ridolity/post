@@ -10836,14 +10836,14 @@ end
 
 spawn(function()
     if _G.Setting['Close Gui'] == true then
-        if game:GetService("CoreGui"):FindFirstChild("     ") and game:GetService("CoreGui")["     "].main.Visible == true then
-            repeat wait()
-                game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
+        game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
                 wait(0.5)
                 game:service('VirtualInputManager'):SendKeyEvent(false, "LeftShift", false, game)
                 wait(0.5)
-            until game:GetService("CoreGui")["     "].main.Visible == false
-        end
+				game:service('VirtualInputManager'):SendKeyEvent(true, "LeftShift", false, game)
+                wait(0.5)
+                game:service('VirtualInputManager'):SendKeyEvent(false, "LeftShift", false, game)
+                wait(0.5)
     end
 end)
 -- Rejoin
