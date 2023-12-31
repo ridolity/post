@@ -9646,9 +9646,6 @@ spawn(function()
 						Status_Win:Set('Status: waiting for the night. ')
 						wait(10)
 					end
-				elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
-					Status_Win:Set('Status: wait fullmoon 4/5 ')
-					wait(10)
 				else
 					Status_Win:Set('Status: wait fullmoon. ')
 					if Auto_Hop_Server then
@@ -10144,10 +10141,16 @@ Race_S:AddToggle({
     Name = 'Auto Farm Trial',
     Enabled = false,
     Callback = function(vu)
+		library:Notify({
+			Paused = false,
+			Text = 'Not Support / ยังไม่เปิดให้ใช้งาน'
+		})
+		--[[
 		Auto_Farm_Trial = vu
 		if Auto_Farm_Trial then
 			position_pass = nil
 		end
+		]]
     end
 })
 local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
@@ -10579,7 +10582,11 @@ Race_S:AddToggle({
     Name = 'Auto Farm Ancient One',
 	Enabled = false,
 	Callback = function(vu)
-		Auto_Farm_Ancient_One = vu
+		library:Notify({
+			Paused = false,
+			Text = 'Not Support / ยังไม่เปิดให้ใช้งาน'
+		})
+		--Auto_Farm_Ancient_One = vu
 	end
 })
 local An_One_S = Race_S:AddLabel({
