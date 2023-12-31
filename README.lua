@@ -9576,7 +9576,7 @@ spawn(function()
 					for each in x:gmatch(regex) do
 						table.insert(result, each)
 					end
-					if tonumber(result[1]) >= 0 and tonumber(result[1]) < 5 or tonumber(result[1]) >= 9 and tonumber(result[1]) <= 20 then
+					if tonumber(result[1]) >= 0 and tonumber(result[1]) < 5 or tonumber(result[1]) >= 12 and tonumber(result[1]) <= 20 then
 						local Check_Boat_H = false 
 						for i,v in pairs(game.Workspace.Boats:GetChildren()) do
 							if Check_Boat_H == false and v.Name == _G.Setting['Boat'] and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
@@ -9644,7 +9644,14 @@ spawn(function()
 						end
 					else
 						Status_Win:Set('Status: waiting for the night. ')
-						wait(10)
+						if Auto_Hop_Server then
+							wait(2)
+							if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+							else
+								Hop_Server()
+								wait(50)
+							end
+						end
 					end
 				else
 					Status_Win:Set('Status: wait fullmoon. ')
