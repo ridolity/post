@@ -8248,10 +8248,10 @@ if _G.Switch_Hub_Series_R then
 								wait(1)
 							else
 								if game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
-									repeat wait(.3)
+									repeat wait(.1)
 										EquipWeapon("God's Chalice")
-										TP(CFrame.new(-5135.14795, 314.058716, -2967.60571, -0.377030611, 3.51194949e-08, 0.926200807, 7.19648767e-08, 1, -8.62289706e-09, -0.926200807, 6.34028297e-08, -0.377030611))
-									until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-5135.14795, 314.058716, -2967.60571)).Magnitude <= 5 
+										TP(CFrame.new(-5561.06738, 314.375793, -2663.88892, -0.304127187, -0.00254100002, 0.952628076, 0.000226983335, 0.999996245, 0.00273981248, -0.952631414, 0.00104948215, -0.304125458))
+									until (Vector3.new(-5561.06738, 314.375793, -2663.88892)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
 									if Snow_White and not Oyster_H then
 										for i,v in pairs(workspace.Map["Boat Castle"].Summoner.Circle:GetChildren()) do
 											if v.Name == 'Part' and tostring(v.BrickColor) == 'Oyster' then
@@ -8314,10 +8314,10 @@ if _G.Switch_Hub_Series_R then
 											rthp = 0
 											game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
 										end
-										if rthp >= 30 then
+										if rthp >= 100 then
 											game.StarterGui:SetCore("SendNotification", {
 												Title = "Check Boss Spawn", 
-												Text = rthp..'/30',
+												Text = rthp..'/100',
 												Icon = "rbxassetid://17002601075",
 												Duration = 15
 											})
@@ -8326,7 +8326,7 @@ if _G.Switch_Hub_Series_R then
 										else
 											game.StarterGui:SetCore("SendNotification", {
 												Title = "Check Boss Spawn", 
-												Text = rthp..'/30',
+												Text = rthp..'/100',
 												Icon = "rbxassetid://17002601075",
 												Duration = 1.5
 											})
@@ -8336,6 +8336,12 @@ if _G.Switch_Hub_Series_R then
 												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
 											end
 											if rthp == 20 then
+												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
+											end
+											if rthp == 50 then
+												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
+											end
+											if rthp == 70 then
 												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
 											end
 										end
