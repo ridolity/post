@@ -4552,7 +4552,7 @@ if _G.Switch_Hub_Series_R then
 							AttackPlayers = 'None'
 							Farm_P_ATTK = false
 							if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true and game:GetService("Players").LocalPlayer.PlayerGui.Notifications:FindFirstChild("NotificationTemplate") and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Notifications:FindFirstChild("NotificationTemplate").Text,'font') then
-								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+								
 							end
 						end
 					end
@@ -9107,6 +9107,12 @@ if _G.Switch_Hub_Series_R then
 							if game.Workspace.Enemies:FindFirstChild(Select_List_Boss) then
 								for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 									if v.Name == Select_List_Boss and v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
+										if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+										end
+										if Select_List_Boss == "Deandre" or Select_List_Boss == "Urban" or Select_List_Boss == "Diablo" then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+										end
 										Start_Kill_Boss = true
 										repeat wait()
 											TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
@@ -9207,13 +9213,6 @@ if _G.Switch_Hub_Series_R then
 								GetLoadSword()
 							elseif game.ReplicatedStorage:FindFirstChild(Select_List_Boss) then
 								Start_Kill_Boss = true
-								if Select_List_Boss == "Deandre" or Select_List_Boss == "Urban" or Select_List_Boss == "Diablo" then
-									repeat wait(.1)
-										TPX(CFrame.new(-5417.6884765625, 313.781982421875, -2824.548828125))
-									until (Vector3.new(-5417.6884765625, 313.781982421875, -2824.548828125)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
-									wait(1)
-									game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
-								end
 								TPX(game.ReplicatedStorage:FindFirstChild(Select_List_Boss).HumanoidRootPart.CFrame*CFrame.new(0,15,0))
 							end
 						elseif not game.Workspace.Enemies:FindFirstChild(Select_List_Boss) and not game.ReplicatedStorage:FindFirstChild(Select_List_Boss) then
