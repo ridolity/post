@@ -8303,49 +8303,12 @@ if _G.Switch_Hub_Series_R then
 											end
 										end
 									end
-									if Oyster_H and Hot_pink_H and Really_red_H then
-										repeat wait(.1)
-											EquipWeapon("God's Chalice")
-											TP(CFrame.new(-5561.06738, 314.375793, -2663.88892, -0.304127187, -0.00254100002, 0.952628076, 0.000226983335, 0.999996245, 0.00273981248, -0.952631414, 0.00104948215, -0.304125458))
-										until (Vector3.new(-5561.06738, 314.375793, -2663.88892)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
-										wait(1)
-									else
-										if rthp == nil then
-											rthp = 0
-											game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
-										end
-										if rthp >= 100 then
-											game.StarterGui:SetCore("SendNotification", {
-												Title = "Check Boss Spawn", 
-												Text = rthp..'/100',
-												Icon = "rbxassetid://17002601075",
-												Duration = 15
-											})
-											List.Quest = false 
-											Quest_Istand = nil
-										else
-											game.StarterGui:SetCore("SendNotification", {
-												Title = "Check Boss Spawn", 
-												Text = rthp..'/100',
-												Icon = "rbxassetid://17002601075",
-												Duration = 1.5
-											})
-											rthp = rthp+1
-											wait(1)
-											if rthp == 10 then
-												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
-											end
-											if rthp == 20 then
-												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
-											end
-											if rthp == 50 then
-												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
-											end
-											if rthp == 70 then
-												game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice","All")
-											end
-										end
-									end
+									EquipWeapon("God's Chalice")
+                                    TP(CFrame.new(-5561.06738, 314.375793, -2663.88892, -0.304127187, -0.00254100002, 0.952628076, 0.000226983335, 0.999996245, 0.00273981248, -0.952631414, 0.00104948215, -0.304125458))
+                                    if TimeLoaderx == nil or tick() - TimeLoaderx > 10 then
+                                        TimeLoaderx = tick()
+                                        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I have God Chalice. I Can't Spawn Boss Admin","All")
+                                    end
 								end
 							end
 						elseif not game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") and not game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
