@@ -1179,9 +1179,9 @@ if _G.Switch_Hub_Series_R then
 		table.insert(_G.Fruit_Main['Main'],xp)
 	end
 	-- FPS Booster
-	UserSettings():GetService("UserGameSettings").MasterVolume = 0
+	--UserSettings():GetService("UserGameSettings").MasterVolume = 0
 
-	UserSettings():GetService("UserGameSettings").SavedQualityLevel = 1
+	--UserSettings():GetService("UserGameSettings").SavedQualityLevel = 1
 	spawn(function()
 		if _G.Main['FPS Booster'] then
 			game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = false
