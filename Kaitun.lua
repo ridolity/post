@@ -8054,10 +8054,10 @@ if _G.Switch_Hub_Series_R then
 							if game.Workspace.Enemies:FindFirstChild(Select_List_Boss) then
 								for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 									if v.Name == Select_List_Boss and v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
-										if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-										end
 										if Select_List_Boss == "Deandre" or Select_List_Boss == "Urban" or Select_List_Boss == "Diablo" then
+											if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+											end
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
 										end
 										Start_Kill_Boss = true
