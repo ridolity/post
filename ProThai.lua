@@ -13314,7 +13314,7 @@ if not jopod and getgenv().Version == 'Thai' then
                                     TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188),true)
                                 until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude <= 3
                             elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude < 3000 then
-                                local Monster = nil
+                                Monster = nil
                                 for i=1500,0,-300 do
                                     GetMonster(i)
                                 end
