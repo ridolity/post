@@ -2604,6 +2604,17 @@ if not jopod and getgenv().Version == 'Thai' then
         _G.Setting['Auto Farm Level'] = vu
         Update_Setting(Save_Setting)
     end,true)
+    General_Tab:Label("🍡 เลเวล + บอสคาตาคุริ + เงินม่วง")
+    General_Tab:Toggle("ออโต้ ฟามเวล + ฟามบอสคาตาคุริ + ฟามเงินม่วง","9606294253",_G.Setting['Auto Farm Level + Cake Prince + Fragments'],function(vu)
+        if Tween == nil then
+        else
+            TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+        end
+        _G.Setting['Auto Farm Level + Cake Prince + Fragments'] = vu
+        Update_Setting(Save_Setting)
+    end,true)
+    local Moster_List = General_Tab:LabelX('จำนวนมอนส์เตอร์ที่ต้องจัดการ : ')
+
     local Geb_Melee = {}
     for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
         if v:IsA('Tool') and tostring(v.ToolTip) == 'Melee' then
@@ -3321,7 +3332,7 @@ if not jopod and getgenv().Version == 'Thai' then
     spawn(function()
         pcall(function()
             game:GetService("RunService").Stepped:Connect(function()
-                if Auto_Farm_Leviathan or _G.Setting['Auto Farm Tushita (One Click + Hop Server)'] or _G.Setting['Auto Farm Yama (One Click + Hop Server)'] or _G.Setting['Auto Farm Material'] or _G.Setting['Auto Farm Material Sea (All Material)'] or Auto_Evo_Race_V4_Solo or _G.Setting['Evo Race V1 M'] or _G.Setting['Auto Cybrog'] or _G.Setting['Evo Race V2 M'] or _G.Setting['Evo Race V3 M'] or Teleport_Is or _G.Setting['Auto Valkyrie Helm + Hop'] or Auto_Mirror_Fractal_Hop or Auto_Farm_Leviathan_B or Auto_Reset_Cooldown_Leviathan_B or Auto_Pull_Lever or Auto_Evo_Race_V4 or Auto_Evo_Race_V4_H1 or Auto_Evo_Race_V4_H2 or Auto_Next_Island or Auto_Farm_Bounty or Auto_Farm_Shark_Anchor or Auto_Fox_Lamp or Auto_Farm_Level or Auto_Farm_Darkbeard or Auto_Farm_Demonic_Wisps or Auto_Farm_Vampire_Fangs or Auto_Reset_Cooldown_Leviathan or Auto_Get_Leviathan or Auto_Farm_Azure or Auto_Farm_Electric_Wings or Auto_Farm_Mutant_Teeth or Auto_Farm_Fool_Gold or Auto_Farm_Shark_Teeth then
+                if Auto_Farm_Leviathan or _G.Setting['Auto Farm Level + Cake Prince + Fragments'] or _G.Setting['Auto Farm Tushita (One Click + Hop Server)'] or _G.Setting['Auto Farm Yama (One Click + Hop Server)'] or _G.Setting['Auto Farm Material'] or _G.Setting['Auto Farm Material Sea (All Material)'] or Auto_Evo_Race_V4_Solo or _G.Setting['Evo Race V1 M'] or _G.Setting['Auto Cybrog'] or _G.Setting['Evo Race V2 M'] or _G.Setting['Evo Race V3 M'] or Teleport_Is or _G.Setting['Auto Valkyrie Helm + Hop'] or Auto_Mirror_Fractal_Hop or Auto_Farm_Leviathan_B or Auto_Reset_Cooldown_Leviathan_B or Auto_Pull_Lever or Auto_Evo_Race_V4 or Auto_Evo_Race_V4_H1 or Auto_Evo_Race_V4_H2 or Auto_Next_Island or Auto_Farm_Bounty or Auto_Farm_Shark_Anchor or Auto_Fox_Lamp or Auto_Farm_Level or Auto_Farm_Darkbeard or Auto_Farm_Demonic_Wisps or Auto_Farm_Vampire_Fangs or Auto_Reset_Cooldown_Leviathan or Auto_Get_Leviathan or Auto_Farm_Azure or Auto_Farm_Electric_Wings or Auto_Farm_Mutant_Teeth or Auto_Farm_Fool_Gold or Auto_Farm_Shark_Teeth then
                     if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
                         local BodyVelocity = Instance.new("BodyVelocity")
                         BodyVelocity.Name = "BodyVelocity"
@@ -4930,7 +4941,7 @@ if not jopod and getgenv().Version == 'Thai' then
                 if Attack_Aura then
                     AttackNoXOO()
                     wait(0.05)
-                elseif _G.Setting['Auto Farm Material'] or _G.Setting['Auto Farm Tushita (One Click + Hop Server)'] or _G.Setting['Auto Farm Yama (One Click + Hop Server)'] or _G.Setting['Auto Farm Material Sea (All Material)'] or Race_Attack or _G.Setting['Evo Race V1 M'] or _G.Setting['Evo Race V2 M'] or _G.Setting['Evo Race V3 M'] or Auto_Farm_Azure or Attack or Auto_Reset_Cooldown_Leviathan or Auto_Reset_Cooldown_Leviathan_B or Auto_Farm_Level or Auto_Get_Leviathan or Auto_Farm_Shark_Anchor or Auto_Farm_Electric_Wings or Auto_Farm_Mutant_Teeth or Auto_Farm_Fool_Gold or Auto_Farm_Shark_Teeth then
+                elseif _G.Setting['Auto Farm Material'] or _G.Setting['Auto Farm Level + Cake Prince + Fragments'] or _G.Setting['Auto Farm Tushita (One Click + Hop Server)'] or _G.Setting['Auto Farm Yama (One Click + Hop Server)'] or _G.Setting['Auto Farm Material Sea (All Material)'] or Race_Attack or _G.Setting['Evo Race V1 M'] or _G.Setting['Evo Race V2 M'] or _G.Setting['Evo Race V3 M'] or Auto_Farm_Azure or Attack or Auto_Reset_Cooldown_Leviathan or Auto_Reset_Cooldown_Leviathan_B or Auto_Farm_Level or Auto_Get_Leviathan or Auto_Farm_Shark_Anchor or Auto_Farm_Electric_Wings or Auto_Farm_Mutant_Teeth or Auto_Farm_Fool_Gold or Auto_Farm_Shark_Teeth then
                     if not Attack_FaX and game.Players.LocalPlayer.Character.Stun.Value == 0 then
                         AttackNoCD()
                         game:GetService("RunService").Stepped:wait()
@@ -8357,6 +8368,59 @@ if not jopod and getgenv().Version == 'Thai' then
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
                         Weapon = 'Sanguine Art'
                         Auto_Buy_Sanguine_Art = false
+                    end
+                elseif _G.Setting['Auto Farm Level + Cake Prince + Fragments'] then
+                    if game.Workspace.Enemies:FindFirstChild('Cake Prince') or game.ReplicatedStorage:FindFirstChild('Cake Prince') then
+                        if game.Workspace.Enemies:FindFirstChild('Cake Prince') then
+                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                if v.Name == 'Cake Prince' and v.Humanoid.Health > 0 then
+                                    repeat wait()
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                        TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,30,0),true)
+                                        EquipWeapon(Weapon)
+                                    until not v.Parent or v.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Level + Cake Prince + Fragments']
+                                end
+                            end
+                        elseif game.ReplicatedStorage:FindFirstChild('Cake Prince') then
+                            TP(game.ReplicatedStorage:FindFirstChild('Cake Prince').HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                        end
+                    elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-2286.684326171875, 146.5656280517578, -12226.8818359375)).Magnitude >= 2000 then
+                        repeat wait()
+                            TPX(CFrame.new(-2286.684326171875, 146.5656280517578, -12226.8818359375))
+                        until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-2286.684326171875, 146.5656280517578, -12226.8818359375)).Magnitude <= 3
+                    elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-2286.684326171875, 146.5656280517578, -12226.8818359375)).Magnitude < 2000 then
+                        Monster = nil
+                        for i=1500,0,-300 do
+                            GetMonster(i)
+                        end
+                        if Monster ~= nil and Monster.Humanoid.Health > 0 then
+                            PosMon_X = Monster.HumanoidRootPart.CFrame
+                            StatrMagnet = true
+                            repeat wait()
+                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                end
+                                TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                EquipWeapon(Weapon)
+                            until not Monster.Parent or Monster.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Level + Cake Prince + Fragments']
+                            StatrMagnet = false
+                        elseif Monster == nil then
+                            for i=1500,0,-300 do
+                                GetMonster(i)
+                            end
+                            if Monster == nil then
+                                TPX(xp)
+                            end
+                        end
+                        local Lp = tostring(string.match(tostring(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")), "%d+"))
+                        if Lp == 'nil' or Lp == nil then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",true)
+                            Moster_List:Set(' Cake Monsters : Boss Spawn')
+                        else
+                            Moster_List:Set(' Cake Monsters : '..Lp)
+                        end
                     end
                 elseif Auto_Farm_Level then
                     FarmLevel()
@@ -13243,28 +13307,60 @@ if not jopod and getgenv().Version == 'Thai' then
         while wait(.1) do
             pcall(function()
                 if _G.Setting['Auto Farm Material'] then
-                    if Start_Farm_Material then
-                        CheckMaterial(_G.Setting['Select Material']) 
-                        if SelectMonster ~= nil then
-                            CheckLevel2(true)
-                            Material_Value:Set(_G.Setting['Select Material']..' : '..tostring(CheckItem_X(_G.Setting['Select Material'])))
-                        end
-                        if Ms ~= nil then
-                            if (CFrameMon.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-                                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                                    if v:FindFirstChild('Humanoid') and (CFrameMon.Position-v.HumanoidRootPart.Position).Magnitude <= 1800 then
-                                        repeat wait(.1)
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                            EquipWeapon(Weapon)
-                                            TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0),true)
-                                        until not v.Parent or v.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Material']
+                    if Start_Farm_Material and _G.Setting['Select Material'] ~= nil then
+                        if _G.Setting['Select Material'] == 'Bones' then
+                            if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude >= 3000 then
+                                repeat wait()
+                                    TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188),true)
+                                until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude <= 3
+                            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude < 3000 then
+                                local Monster = nil
+                                for i=1500,0,-300 do
+                                    GetMonster(i)
+                                end
+                                if Monster ~= nil and Monster.Humanoid.Health > 0 then
+                                    PosMon_X = Monster.HumanoidRootPart.CFrame
+                                    StatrMagnet = true
+                                    repeat wait()
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                        TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                        EquipWeapon(Weapon)
+                                    until not Monster.Parent or Monster.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Material']
+                                    StatrMagnet = false
+                                elseif Monster == nil then
+                                    for i=1500,0,-300 do
+                                        GetMonster(i)
+                                    end
+                                    if Monster == nil and Three_World then
+                                        TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188))
                                     end
                                 end
+                            end
+                        else
+                            CheckMaterial(_G.Setting['Select Material']) 
+                            if SelectMonster ~= nil then
+                                CheckLevel2(true)
                                 Material_Value:Set(_G.Setting['Select Material']..' : '..tostring(CheckItem_X(_G.Setting['Select Material'])))
-                            else
-                                TPX(CFrameMon,true)
+                            end
+                            if Ms ~= nil then
+                                if (CFrameMon.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+                                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                        if v:FindFirstChild('Humanoid') and (CFrameMon.Position-v.HumanoidRootPart.Position).Magnitude <= 1800 then
+                                            repeat wait(.1)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                                EquipWeapon(Weapon)
+                                                TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0),true)
+                                            until not v.Parent or v.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Material']
+                                        end
+                                    end
+                                    Material_Value:Set(_G.Setting['Select Material']..' : '..tostring(CheckItem_X(_G.Setting['Select Material'])))
+                                else
+                                    TPX(CFrameMon,true)
+                                end
                             end
                         end
                     end
