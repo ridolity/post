@@ -12316,7 +12316,18 @@ if not jopod and getgenv().Version == 'Thai' then
             pcall(function()
                 if _G.Setting['Auto Cybrog'] then
                     if New_World then
-                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Microchip","1") ~= true then
+                        if not Use_Chip and time_low == nil or not Use_Chip and tick() - time_low >= 60 then
+                            time_low = tick()
+                            fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
+                            wait(1)
+                            Dungeon_H = false
+                            for r, k in pairs(game.Players.LocalPlayer.PlayerGui.Notifications:GetChildren()) do
+                                if k and k.Text and string.find(k.Text,"Microchip not found.") then
+                                    Dungeon_H = true
+                                end
+                            end
+                        end
+                        if Dungeon_H == true and not Use_Chip then
                             if game.Players.LocalPlayer.Character:FindFirstChild('Fist of Darkness') or game.Players.LocalPlayer.Backpack:FindFirstChild('Fist of Darkness') then
                                 EquipWeapon('Fist of Darkness')
                                 fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
