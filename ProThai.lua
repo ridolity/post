@@ -1994,7 +1994,7 @@ if not jopod and getgenv().Version == 'Thai' then
         _G.Setting['Auto Cybrog'] = vu
         Update_Setting(Save_Setting)
     end,true)
-    local Chest_Value = Race_V3_Tab:LabelX('จำนวนกล่อง :')
+    local Chest_Value = Race_V3_Tab:LabelX('จำนวนกล่องที่เก็บ :')
     Race_V3_Tab:Label('🩸 Ghoul')
     Race_V3_Tab:Toggle("Auto Farm Race Ghoul + Hop Server (One Click)","9606294253",false,function(vu)
     
@@ -12316,14 +12316,15 @@ if not jopod and getgenv().Version == 'Thai' then
             pcall(function()
                 if _G.Setting['Auto Cybrog'] then
                     if New_World then
-                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CyborgTrainer","Check") == nil then
+                        if not game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Microchip","1") == true then
                             if game.Players.LocalPlayer.Character:FindFirstChild('Fist of Darkness') or game.Players.LocalPlayer.Backpack:FindFirstChild('Fist of Darkness') then
                                 EquipWeapon('Fist of Darkness')
                                 fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
+                                Use_Chip = true
                             else
                                 if chest_chane == nil then
                                     chest_chane = 0
-                                    Chest_Value:Set('จำนวนกล่อง: 0/'..Chest_Order)
+                                    Chest_Value:Set('จำนวนกล่องที่เก็บ : 0/'..Chest_Order)
                                 end 
                                 if chest_chane >= Chest_Order then
                                     HopLowServer()
@@ -12350,14 +12351,16 @@ if not jopod and getgenv().Version == 'Thai' then
                                             end
                                         until not Chest_Drop.Parent or not Chest_Drop
                                         chest_chane = chest_chane+1
-                                        Chest_Value:Set('จำนวนกล่อง: '..chest_chane..'/'..Chest_Order)
+                                        Chest_Value:Set('จำนวนกล่องที่เก็บ : '..chest_chane..'/'..Chest_Order)
                                     else
                                         TP(CFrame.new(638.43811, 151.769989, 918.282898))
                                     end
                                 end
                             end 
-                        else
+                        elseif not tostring(game.Players.LocalPlayer.Data.Race.Value) == 'Cyborg' then
                             if game.Players.LocalPlayer.Backpack:FindFirstChild('Core Brain') or game.Players.LocalPlayer.Character:FindFirstChild('Core Brain') then
+                                fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
+                                wait(2)
                                 local args = {
                                     [1] = "CyborgTrainer",
                                     [2] = "Buy"
@@ -12369,13 +12372,16 @@ if not jopod and getgenv().Version == 'Thai' then
                                     if v.Name == 'Order' and v.Humanoid.Health > 0 then
                                         Attack = true
                                         repeat wait(.1)
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                            end
                                             EquipWeapon(Weapon)
-                                            TP(v.HumanoidRootPart.CFrame*CFrame.new(0,40,0))
+                                            TP(v.HumanoidRootPart.CFrame*CFrame.new(0,40,10))
                                         until not v.Parent or v.Humanoid.Health <= 0 or not _G.Setting['Auto Cybrog']
                                         Attack = false
-                                        wait(1)
                                     end
                                 end
+                                wait(0.5)
                             elseif not game.Workspace.Enemies:FindFirstChild("Order") and not game.ReplicatedStorage:FindFirstChild("Order") then
                                 if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Microchip") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Microchip") then
                                     fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
