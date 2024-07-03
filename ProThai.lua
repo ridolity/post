@@ -12316,7 +12316,7 @@ if not jopod and getgenv().Version == 'Thai' then
             pcall(function()
                 if _G.Setting['Auto Cybrog'] then
                     if New_World then
-                        if not game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Microchip","1") == true then
+                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Microchip","1") ~= true then
                             if game.Players.LocalPlayer.Character:FindFirstChild('Fist of Darkness') or game.Players.LocalPlayer.Backpack:FindFirstChild('Fist of Darkness') then
                                 EquipWeapon('Fist of Darkness')
                                 fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
@@ -12357,7 +12357,7 @@ if not jopod and getgenv().Version == 'Thai' then
                                     end
                                 end
                             end 
-                        elseif not tostring(game.Players.LocalPlayer.Data.Race.Value) == 'Cyborg' then
+                        elseif tostring(game.Players.LocalPlayer.Data.Race.Value) ~= 'Cyborg' then
                             if game.Players.LocalPlayer.Backpack:FindFirstChild('Core Brain') or game.Players.LocalPlayer.Character:FindFirstChild('Core Brain') then
                                 fireclickdetector(game.workspace.Map.CircleIsland.RaidSummon.Button.Main.ClickDetector, 1)
                                 wait(2)
