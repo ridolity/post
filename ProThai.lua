@@ -1966,7 +1966,7 @@ if not jopod and getgenv().Version == 'Thai' then
         end
     end)
     -- Race V3
-    Race_V3_Tab:Label('🔥 อีโวเผ่า (มิงค์, สกายเปีย, เงือก, มนุษย์)')
+    Race_V3_Tab:Label('🔥 อีโวเผ่า (มิงค์, สกายเปีย, เงือก, มนุษย์, ไซบรอก)')
     Race_V3_Tab:Toggle("ออโต้ อีโวเผ่าวี3","9606294253",_G.Setting['Evo Race V3 M'],function(vu)
         _G.Setting['Evo Race V3 M'] = vu
         Update_Setting(Save_Setting)
@@ -1979,16 +1979,6 @@ if not jopod and getgenv().Version == 'Thai' then
         _G.Setting['Evo Race V1 M'] = vu
         Update_Setting(Save_Setting)
     end,true)
-    Race_V3_Tab:Label('🌟 Evo Special Race (Ghoul, Cyborg)')
-    Race_V3_Tab:Toggle("Auto Evo Race V3","9606294253",false,function(vu)
-    
-    end)
-    Race_V3_Tab:Toggle("Auto Evo Race V2","9606294253",false,function(vu)
-        
-    end)
-    Race_V3_Tab:Toggle("Auto Evo Race V1","9606294253",false,function(vu)
-        
-    end)
     Race_V3_Tab:Label('⚙️ ไซบอร์ก')
     Race_V3_Tab:Toggle("ออโต้ ทำเผ่าไซบอร์ก (คลิกเดียว+ย้ายเซิฟ)","9606294253",_G.Setting['Auto Cybrog'],function(vu)
         _G.Setting['Auto Cybrog'] = vu
@@ -12298,6 +12288,37 @@ if not jopod and getgenv().Version == 'Thai' then
                                     end
                                 end
                                 ]]
+                            elseif game.Players.LocalPlayer.Data.Race.Value == 'Cyborg' then
+                                if Quest_Start_Evo_Skypiea_V3 then
+                                    GetFruit()
+                                    if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Tool') and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Tool'):FindFirstChild('EatRemote') then
+                                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","3") == -2 then
+                                            Evo_Race_V3_H = true 
+                                            if New_World or Three_World then
+                                                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","3") == -2 then -- V1
+                                                    Evo_Race_V1_H = true
+                                                end
+                                            end
+                                            if New_World or Three_World then
+                                                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","1") ~= nil and Evo_Race_V1_H then -- V2
+                                                    Evo_Race_V2_H = true
+                                                end
+                                            end
+                                            if New_World or Three_World then
+                                                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","3") == -2 then
+                                                    Evo_Race_V3_H = true
+                                                end
+                                            end 
+                                        end
+                                    end
+                                else
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","1")
+                                    wait(1)
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","2")
+                                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","1") == 1 or game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","1") == 2 then
+                                        Quest_Start_Evo_Skypiea_V3 = true
+                                    end
+                                end
                             end
                         end
                     else
