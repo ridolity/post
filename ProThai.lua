@@ -11673,6 +11673,40 @@ if not jopod and getgenv().Version == 'Thai' then
             end
         end
     end
+    function GetFruit()
+        pcall(function()
+            if game.Players.LocalPlayer.Character:FindFirstChildOfClass('Tool') and game.Players.LocalPlayer.Character:FindFirstChildOfClass('Tool'):FindFirstChild('EatRemote') then
+                return
+            else
+                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v:IsA('Tool') and string.find(v.Name,'Fruit') then
+                        EquipWeapon(v.Name)
+                    end
+                end
+                local fruit = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryFruits")
+                local chip = {}
+                for i,v in pairs(fruit)do
+                    if v['Price'] < 1000000 then
+                        table.insert(chip,v['Price'])
+                    end
+                end
+                if #chip > 0 then
+                    local fruit_select = math.min(unpack(chip))
+                    for i,v in pairs(fruit)do
+                        if v['Price'] == fruit_select then
+                            result = {}
+                            local regex = ("([^%s]+)"):format("-")
+                            for each in v["Name"]:gmatch(regex) do
+                                table.insert(result, each)
+                            end
+                            NameFruit = result[2] .. " Fruit"
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadFruit",v["Name"])
+                        end
+                    end
+                end
+            end
+        end)
+    end
     time_xeg = 0
     function AttackNoCDX()
         pcall(function()
