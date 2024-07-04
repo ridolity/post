@@ -8368,7 +8368,7 @@ if not jopod and getgenv().Version == 'Thai' then
                                         if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
-                                        TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,30,0),true)
+                                        TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0),true)
                                         EquipWeapon(Weapon)
                                     until not v.Parent or v.Humanoid.Health <= 0 or not _G.Setting['Auto Farm Level + Cake Prince + Fragments']
                                 end
