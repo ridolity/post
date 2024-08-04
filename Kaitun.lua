@@ -6645,27 +6645,27 @@ if _G.Switch_Hub_Series_R then
 	end
 	-- Get Quest CDK
 	function GetQuest(vu)
-	if (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 30 then
-		TPX(CFrame.new(-12379.1406, 601.433167, -6543.60742))
-	elseif (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 30 then
-		if vu == 'Good' then
-			repeat wait(.1)
-				TPZ(CFrame.new(-12392.5068, 603.319763, -6596.00586))
-			until (Vector3.new(-12392.5068, 603.319763, -6596.00586)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-			wait(1)
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
-			wait(1)
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Good")
-		elseif vu == 'Evil' then
-			repeat wait(.1)
-				TPZ(CFrame.new(-12392.2637, 603.319763, -6503.27832))
-			until (Vector3.new(-12392.2637, 603.319763, -6503.27832)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-			wait(1)
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
-			wait(1)
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+		if (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 30 then
+			TPX(CFrame.new(-12379.1406, 601.433167, -6543.60742))
+		elseif (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 30 then
+			if vu == 'Good' then
+				repeat wait(.1)
+					TPZ(CFrame.new(-12392.5068, 603.319763, -6596.00586))
+				until (Vector3.new(-12392.5068, 603.319763, -6596.00586)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
+				wait(1)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Good")
+				wait(1)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Good")
+			elseif vu == 'Evil' then
+				repeat wait(.1)
+					TPZ(CFrame.new(-12392.2637, 603.319763, -6503.27832))
+				until (Vector3.new(-12392.2637, 603.319763, -6503.27832)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
+				wait(1)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","Progress","Evil")
+				wait(1)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","StartTrial","Evil")
+			end
 		end
-	end
 	end
 	-- Aimbot
 	spawn(function()
@@ -6692,17 +6692,21 @@ if _G.Switch_Hub_Series_R then
 	-- Get Torch
 	function GetTorch(vu)
 		repeat wait()
-			TPZ(game:GetService("Workspace").Map.HeavenlyDimension[vu].CFrame)
+			TP(game:GetService("Workspace").Map.HeavenlyDimension[vu].CFrame)
 		until (game:GetService("Workspace").Map.HeavenlyDimension[vu].Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-		fireproximityprompt(game:GetService("Workspace").Map.HeavenlyDimension[vu].ProximityPrompt,5)
 		wait(0.5)
+		fireproximityprompt(game:GetService("Workspace").Map.HeavenlyDimension[vu].ProximityPrompt,1)
+		wait(1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,40,0)
 	end
 	function GetTorchX(vu)
 		repeat wait()
-			TPZ(game:GetService("Workspace").Map.HellDimension[vu].CFrame)
+			TP(game:GetService("Workspace").Map.HellDimension[vu].CFrame)
 		until (game:GetService("Workspace").Map.HellDimension[vu].Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-		fireproximityprompt(game:GetService("Workspace").Map.HellDimension[vu].ProximityPrompt,5)
 		wait(0.5)
+		fireproximityprompt(game:GetService("Workspace").Map.HellDimension[vu].ProximityPrompt,1)
+		wait(1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,40,0)
 	end
 	function GetMon_Soul()
 		for i,v in next,game:GetService("Workspace").Enemies:GetChildren() do
@@ -9358,560 +9362,340 @@ if _G.Switch_Hub_Series_R then
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 4/10')
 									CDK_Q_S_C = 4
 									if CheckQuest['Evil'] == 0 then
-										GetQuest('Evil')
-									elseif CheckQuest['Evil'] == -3 then
-										Stop_Fast_Attack = true
-										for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-											if v:FindFirstChild('HumanoidRootPart') and (v.HumanoidRootPart.Position-Vector3.new(-13347.6982, 332.378143, -7652.27783)).Magnitude > 10 then
-												v.HumanoidRootPart.CFrame = CFrame.new(-13347.6982, 332.378143, -7652.27783)
-												sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
-											end
-										end
-										TPX(CFrame.new(-13347.6982, 332.378143, -7652.27783, -0.97929436, 4.50812898e-08, -0.202441484, 4.58302409e-08, 1, 9.8789521e-10, 0.202441484, -8.31050162e-09, -0.97929436))
-									end
+                                        GetQuest('Evil')
+                                    elseif CheckQuest['Evil'] == -3 then
+                                        Stop_Fast_Attack = true
+                                        for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                            if v:FindFirstChild('HumanoidRootPart') and (v.HumanoidRootPart.Position-Vector3.new(-13347.6982, 332.378143, -7652.27783)).Magnitude > 10 then
+                                                v.HumanoidRootPart.CFrame = CFrame.new(-13347.6982, 332.378143, -7652.27783)
+                                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
+                                            end
+                                        end
+                                        TPX(CFrame.new(-13347.6982, 332.378143, -7652.27783, -0.97929436, 4.50812898e-08, -0.202441484, 4.58302409e-08, 1, 9.8789521e-10, 0.202441484, -8.31050162e-09, -0.97929436))
+                                    end
 								elseif CheckQuest['Evil'] == 1 or CheckQuest['Evil'] == -4 then
 									Stop_Fast_Attack = false
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 5/10')
 									CDK_Q_S_C = 5
 									if CheckQuest['Evil'] == 1 then
-										GetQuest('Evil')
-									elseif CheckQuest['Evil'] == -4 then
-										if game:GetService("Players").LocalPlayer:FindFirstChild('QuestHaze') then
-											if Quest_Kill == nil then
-												for i,v in pairs(game:GetService("Players").LocalPlayer.QuestHaze:GetChildren()) do
-													if tonumber(v.Value) > 0 and Quest_Kill == nil then
-														SelectMonster = v.Name
-														CFrameMon = nil
-														CheckLevel2()
-														if CFrameMon ~= nil then
-															Quest_Kill = v.Name
-														end
-													end
-												end
-											elseif game:GetService("Players").LocalPlayer.QuestHaze:FindFirstChild(Quest_Kill) and tonumber(game:GetService("Players").LocalPlayer.QuestHaze:FindFirstChild(Quest_Kill).Value) <= 0 then
-												Quest_Kill = nil
-											elseif game:GetService("Players").LocalPlayer.QuestHaze:FindFirstChild(Quest_Kill) and tonumber(game:GetService("Players").LocalPlayer.QuestHaze:FindFirstChild(Quest_Kill).Value) > 0 then
-												for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-													if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and v:FindFirstChild('HazeESP') then
-														repeat wait(.1)
-															Click()
-															TP(v.HumanoidRootPart.CFrame*CFrame.new(0,25,0))
-															EquipWeapon(Weapon)
-														until not v.Parent or v.Humanoid.Health <= 0 
-													end
-												end
-												TPX(CFrameMon)
-											else
-												Quest_Kill = nil
-											end
-										end
-									end
+                                        GetQuest('Evil')
+                                    elseif CheckQuest['Evil'] == -4 then
+                                        if game:GetService("Players").LocalPlayer:FindFirstChild('QuestHaze') then
+                                            if PosMon_Kill == nil and Name_Mons_Kill == nil then
+                                                for i,v in pairs(game:GetService("Players").LocalPlayer.QuestHaze:GetChildren()) do
+                                                    if tonumber(v.Value) > 0 and PosMon_Kill == nil then
+                                                        print(v.Name)
+                                                        PosMon_Kill = v:GetAttributes()['Position']
+                                                        Name_Mons_Kill = v.Name
+                                                    end
+                                                end
+                                            else
+                                                local Succes_kill = nil
+                                                for ix,vx in pairs(game:GetService("Players").LocalPlayer.QuestHaze:GetChildren()) do
+                                                    if vx.Name == Name_Mons_Kill then
+                                                        if tonumber(vx.Value) <= 0 then
+                                                            Succes_kill = true
+                                                        end
+                                                    end
+                                                end
+                                                if Succes_kill then
+                                                    PosMon_Kill = nil
+                                                    Name_Mons_Kill = nil
+                                                else
+                                                    TPX(CFrame.new(PosMon_Kill))
+                                                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                        if v.Humanoid.Health > 0 and v:FindFirstChild('HazeESP') then
+                                                            Attack = true
+                                                            repeat wait(.1)
+                                                                TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                                EquipWeapon(Weapon)
+                                                            until not v.Parent or v.Humanoid.Health <= 0 
+                                                            Attack = false
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
 								elseif CheckQuest['Good'] == 1 or CheckQuest['Good'] == -4 then
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 6/10')
 									CDK_Q_S_C = 6
 									if CheckQuest['Good'] == 1 then
-										GetQuest('Good')
-									elseif CheckQuest['Good'] == -4 then
-										TPX(CFrame.new(-5543.08056640625, 313.7655029296875, -2969.484619140625))
-										if (Vector3.new(-5543.08056640625, 313.7655029296875, -2969.484619140625)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
-											for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-												if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
-													repeat wait(.3)
-														Click()
-														EquipWeapon(Weapon)
-														TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-													until not v.Parent or v.Humanoid.Health <= 0 
-												end
-											end
-										end
-									end
+                                        GetQuest('Good')
+                                    elseif CheckQuest['Good'] == -4 then
+                                        TPX(CFrame.new(-5543.08056640625, 313.7655029296875, -2969.484619140625))
+                                        if (Vector3.new(-5543.08056640625, 313.7655029296875, -2969.484619140625)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+                                                    repeat wait(.3)
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                            game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                        end
+                                                        EquipWeapon(Weapon)
+                                                        TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                    until not v.Parent or v.Humanoid.Health <= 0 
+                                                end
+                                            end
+                                        end
+                                    end
 								elseif CheckQuest['Good'] == 2 or CheckQuest['Good'] == -5 then
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 7/10')
 									CDK_Q_S_C = 7
 									Cake_Quest = true
 									if CheckQuest['Good'] == 2 then
-										GetQuest('Good')
-									elseif CheckQuest['Good'] == -5 then
-										if not Kill_Boss_Cake then
-											if game:GetService("Workspace").Enemies:FindFirstChild('Cake Queen') then
-												for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-													if v.Name == 'Cake Queen' and v.Humanoid.Health > 0 and not Kill_Boss_Cake then
-														repeat wait(.3)
-															Click()
-															TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-															EquipWeapon(Weapon)
-														until not v.Parent or v.Humanoid.Health <= 0
-														Kill_Boss_Cake = true
-													end
-												end
-											else
-												TPX(CFrame.new(-714.643066, 381.565613, -11021.0566))
-											end
-										else
-											if game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
-												if not Ceyma_HeavenlyDimension then
-													repeat wait(.1)
-														TP(game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot)
-													until (game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
-													wait(1)
-													Ceyma_HeavenlyDimension = true
-												elseif Ceyma_HeavenlyDimension then
-													EquipWeapon(Weapon)
-													if game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-														for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-															if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
-																if v.Humanoid.Health > 0 then
-																	repeat wait()
-																		Click()
-																		TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-																		EquipWeapon(Weapon)
-																	until not v.Parent or v.Humanoid.Health <= 0
-																end
-															end
-														end
-													elseif not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-														GetTorch('Torch1')
-														if not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-															GetTorch('Torch2')
-															if not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-																GetTorch('Torch3')
-																if not game.Workspace.Enemies:FindFirstChildOfClass('Model') and game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
-																	game:GetService("Workspace").Map.HeavenlyDimension.Exit.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-																	wait(1)
-																end
-															end
-														end
-													end
-												end
-											elseif not game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
-												wait(5)
-												if not game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
-													Kill_Boss_Cake = false
-												end
-											end
-										end
-									end
+                                        GetQuest('Good')
+                                    elseif CheckQuest['Good'] == -5 then
+                                        if not Kill_Boss_Cake then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild('Cake Queen') then
+                                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == 'Cake Queen' and v.Humanoid.Health > 0 and not Kill_Boss_Cake then
+                                                        repeat wait(.3)
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                            TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                            EquipWeapon(Weapon)
+                                                        until not v.Parent or v.Humanoid.Health <= 0
+                                                        Kill_Boss_Cake = true
+                                                    end
+                                                end
+                                            else
+                                                TPX(CFrame.new(-714.643066, 381.565613, -11021.0566))
+                                            end
+                                        else
+                                            if game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
+                                                if not Ceyma_HeavenlyDimension then
+                                                    repeat wait(.1)
+                                                        TP(game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot)
+                                                    until (game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
+                                                    wait(1)
+                                                    Ceyma_HeavenlyDimension = true
+                                                elseif Ceyma_HeavenlyDimension then
+                                                    EquipWeapon(Weapon)
+                                                    GetTorch('Torch1')
+                                                    GetTorch('Torch2')
+                                                    GetTorch('Torch3')
+                                                    local check_monster = nil
+                                                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                        if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                                                            if v.Humanoid.Health > 0 then
+                                                                check_monster = true
+                                                                repeat wait(.1)
+                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                        game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                                    end
+                                                                    TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                                    EquipWeapon(Weapon)
+                                                                until not v.Parent or v.Humanoid.Health <= 0
+                                                            end
+                                                        end
+                                                    end
+                                                    if not check_monster then
+                                                        wait(1)
+                                                        local check_monster = nil
+                                                        for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                            if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                                                                if v.Humanoid.Health > 0 then
+                                                                    check_monster = true
+                                                                end
+                                                            end
+                                                        end
+                                                        if not check_monster then
+                                                            game:GetService("Workspace").Map.HeavenlyDimension.Exit.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                                                            wait(2)
+                                                        end 
+                                                    end
+                                                end
+                                            elseif not game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
+                                                wait(5)
+                                                if not game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
+                                                    Kill_Boss_Cake = false
+                                                end
+                                            end
+                                        end
+                                    end
 								elseif CheckQuest['Evil'] == 2 or CheckQuest['Evil'] == -5 then
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 8/10')
 									CDK_Q_S_C = 8
 									if CheckQuest['Evil'] == 2 then
-										GetQuest('Evil')
-									elseif CheckQuest['Evil'] == -5 then
-										if game:GetService("Workspace").Map:FindFirstChild('HellDimension') then
-											if (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1200 then
-												repeat wait(.1)
-													TP(game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot)
-												until (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10
-												wait(1)
-											elseif (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1200 then
-												EquipWeapon(Weapon)
-												if game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-													for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-														if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
-															if v.Humanoid.Health > 0 then
-																repeat wait()
-																	Click()
-																	TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-																	EquipWeapon(Weapon)
-																until not v.Parent or v.Humanoid.Health <= 0
-															end
-														end
-													end
-												elseif not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-													GetTorchX('Torch1')
-													if not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-														GetTorchX('Torch2')
-														if not game.Workspace.Enemies:FindFirstChildOfClass('Model') then
-															GetTorchX('Torch3')
-															if not game.Workspace.Enemies:FindFirstChildOfClass('Model') and game:GetService("Workspace").Map:FindFirstChild('HellDimension') then
-																game:GetService("Workspace").Map.HellDimension.Exit.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-																wait(1)
-															end
-														end
-													end
-												end
-											end
-										elseif not game:GetService("Workspace").Map:FindFirstChild('HellDimension') then
-											if game.Workspace.Enemies:FindFirstChild("Soul Reaper") or game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
-												Stop_Fast_Attack = true
-												if not game.Workspace.Enemies:FindFirstChild("Soul Reaper") and game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
-													repeat wait(.2)
-														TP(game.ReplicatedStorage:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-													until game.Workspace.Enemies:FindFirstChild("Soul Reaper")
-													wait(1)
-												end
-												if game.Workspace.Enemies:FindFirstChild("Soul Reaper") then
-													TP(game.Workspace.Enemies:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame*CFrame.new(0,0,2))
-													wait(1)
-												end
-											elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check") > 0 and CheckItem('Bones') > 500 then
-												repeat wait(.2)
-													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check")
-													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
-												until game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check") == 0
-												wait(1)
-												if not Dragon_Talon_Q then
-													if game.Players.LocalPlayer.Backpack:FindFirstChild("Fire Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Fire Essence") then
-														Set_Status_X(' Status : Use Fire Essence')
-														repeat 
-															EquipWeapon("Fire Essence")
-															wait(.5)
-															game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyDragonTalon",true)
-															game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyDragonTalon")
-														until not game.Players.LocalPlayer.Backpack:FindFirstChild("Fire Essence") and not game.Players.LocalPlayer.Character:FindFirstChild("Fire Essence")
-														if not string.find(tostring(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyDragonTalon",true)),'heart') then
-															Dragon_Talon_S_Q:Set(' ✅ : Quest Dragon Talon')
-															Dragon_Talon_Q = true
-														end
-													end
-												end
-												if game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") then
-													Set_Status_X(' Status : Use Hallow Essence')
-													repeat wait(1)
-														EquipWeapon("Hallow Essence")
-														TP(CFrame.new(-8932.86, 143.258, 6063.31))
-													until not game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") and not game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence")
-												end
-											elseif not game.Workspace.Enemies:FindFirstChild("Soul Reaper") and not game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
-												if Check_Raid and not Old_World and CheckItem('Bones') >= 500 then
-													if Quest_Dough_Awaken_EX and game.Players.LocalPlayer.Data.Fragments.Value >= 6000 then
-														if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", 'Dough') == 1 then
-															Raid_Dough_Down = true
-															List.Raid = true
-															wait(.5)
-														elseif _G.Quest['Fast Dough Awaken'] then
-															if not iojdijfgo and GetFruitOneM() == true then
-																if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", 'Dough') == 1 then
-																	Raid_Dough_Down = true
-																	List.Raid = true
-																	wait(.5)
-																end
-															elseif not iojdijfgo then
-																iojdijfgo = true
-															end
-														end
-													else
-														if game.Players.LocalPlayer.Data.Level.Value >= 1100 then
-															if not game.Players.LocalPlayer.Backpack:FindFirstChild('Special Microchip') and not game.Players.LocalPlayer.Character:FindFirstChild('Special Microchip') then
-																if game.Players.LocalPlayer.Data.DevilFruit.Value == "Dark-Dark" then 
-																	Select_Map = "Dark"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Sand-Sand" then
-																	Select_Map = "Sand"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Magma-Magma" then
-																	Select_Map = "Magma"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Rumble-Rumble" then
-																	Select_Map = "Rumble"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Flame-Flame" then
-																	Select_Map = "Flame"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Ice-Ice" then
-																	Select_Map = "Ice"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Light-Light" then
-																	Select_Map = "Light"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "String-String" then
-																	Select_Map = "String"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Quake-Quake" then
-																	Select_Map = "Quake"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Buddha-Buddha" then
-																	Select_Map = "Buddha"
-																else
-																	Select_Map = "Flame"
-																end
-																if tostring(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", Select_Map)) == '1' then
-																	List.Raid = true
-																	wait(.5)
-																end
-															end
-															if not List.Raid then
-																GetFruit()
-																if game.Players.LocalPlayer.Data.DevilFruit.Value == "Dark-Dark" then
-																	Select_Map = "Dark"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Sand-Sand" then
-																	Select_Map = "Sand"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Magma-Magma" then
-																	Select_Map = "Magma"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Rumble-Rumble" then
-																	Select_Map = "Rumble"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Flame-Flame" then
-																	Select_Map = "Flame"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Ice-Ice" then
-																	Select_Map = "Ice"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Light-Light" then
-																	Select_Map = "Light"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "String-String" then
-																	Select_Map = "String"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Quake-Quake" then
-																	Select_Map = "Quake"
-																elseif game.Players.LocalPlayer.Data.DevilFruit.Value == "Buddha-Buddha" then
-																	Select_Map = "Buddha"
-																else
-																	Select_Map = "Flame"
-																end
-																if tostring(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", Select_Map)) == '1' then
-																	List.Raid = true
-																	wait(.5)
-																end
-															end
-														end
-													end
-												end
-												if not List.Raid then
-													if List.Fruit and _G.Main['Bring Fruit'] and not Koko_Quest and Quest_Istand ~= 'God Dough Awaken' and not Not_Farm_Boss and not game:GetService("Workspace").Map:FindFirstChild('HellDimension') and not game:GetService("Workspace").Map:FindFirstChild('HeavenlyDimension') then
-														Set_Status_X(' Status : Bring Fruit')
-														iojdijfgo = false
-														for i,v in pairs(game.Workspace:GetChildren()) do
-															if string.find(v.Name,'Fruit') and v:FindFirstChild('Handle') and not List.Raid then
-																repeat wait(.1)
-																	if (v.Handle.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 2550 then
-																		TPX(v.Handle.CFrame*CFrame.new(0,0,80))
-																	elseif (v.Handle.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2500 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-																		TPZ(v.Handle.CFrame)
-																	end
-																until (v.Handle.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10
-																wait(3)
-																for i2,v2 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-																	if v2:IsA('Tool') and string.find(v2.Name,'Fruit') then
-																		result = {} 
-																		local regex = ("([^%s]+)"):format(" ")
-																		for each in v2.Name:gmatch(regex) do
-																			table.insert(result, each)
-																		end
-																		local x = result[1].."-"..result[1]
-																		if v2.Name == 'Bird: Phoenix Fruit' then
-																			x = 'Bird-Bird: Phoenix' 
-																		end
-																		if v2.Name == "Bird: Falcon Fruit" then
-																			x = "Bird-Bird: Falcon"
-																		end
-																		local time_check = 0
-																		repeat wait(.1)
-																			EquipWeapon(v2.Name)
-																			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",x,game:GetService("Players").LocalPlayer.Character:FindFirstChild(v2.Name))
-																			wait(.5)
-																			time_check = time_check+1
-																		until time_check >= 3 or not game.Players.LocalPlayer.Backpack:FindFirstChild(v2.Name) and not game.Players.LocalPlayer.Character:FindFirstChild(v2.Name)
-																		if time_check >= 3 then
-																			if game.Players.LocalPlayer.Backpack:FindFirstChild(v2.Name) or game.Players.LocalPlayer.Character:FindFirstChild(v2.Name) then
-																				if New_World or Three_World then
-																					if game.Players.LocalPlayer.Data.Fragments.Value <= 15000 and game.Players.LocalPlayer.Data.Level.Value >= 1100 then
-																						List.Raid = true
-																						Buy_Chip()
-																					else
-																						v2:Destroy()
-																					end
-																				elseif Old_World then
-																					v2:Destroy()
-																					wait(0.5)
-																				end
-																			end
-																		end
-																	end
-																end
-																for i2,v2 in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-																	if v2:IsA('Tool') and string.find(v2.Name,'Fruit') then
-																		result = {} 
-																		local regex = ("([^%s]+)"):format(" ")
-																		for each in v2.Name:gmatch(regex) do
-																			table.insert(result, each)
-																		end
-																		local x = result[1].."-"..result[1]
-																		if v2.Name == 'Bird: Phoenix Fruit' then
-																			x = 'Bird-Bird: Phoenix' 
-																		end
-																		if v2.Name == "Bird: Falcon Fruit" then
-																			x = "Bird-Bird: Falcon"
-																		end
-																		local time_check = 0
-																		repeat wait(.1)
-																			EquipWeapon(v2.Name)
-																			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",x,game:GetService("Players").LocalPlayer.Character:FindFirstChild(v2.Name))
-																			wait(1)
-																			time_check = time_check+1
-																		until time_check >= 3 or not game.Players.LocalPlayer.Backpack:FindFirstChild(v2.Name) and not game.Players.LocalPlayer.Character:FindFirstChild(v2.Name)
-																		if time_check >= 3 then
-																			if game.Players.LocalPlayer.Backpack:FindFirstChild(v2.Name) or game.Players.LocalPlayer.Character:FindFirstChild(v2.Name) then
-																				if New_World or Three_World then
-																					if game.Players.LocalPlayer.Data.Fragments.Value <= 15000 and game.Players.LocalPlayer.Data.Level.Value >= 1100 then
-																						List.Raid = true
-																						Buy_Chip()
-																					else
-																						v2:Destroy()
-																					end
-																				elseif Old_World then
-																					v2:Destroy()
-																					wait(0.5)
-																				end
-																			end
-																		end
-																	end
-																end
-																v:Destroy()
-															end
-														end
-														List.Fruit = false
-														for i,v in pairs(game.Workspace:GetChildren()) do
-															if string.find(v.Name,'Fruit') and v:FindFirstChild('Handle') then
-																List.Fruit = true
-															end
-														end
-														-- Eat Fruit
-														if game.Players.LocalPlayer.Data.Level.Value >= 1100 and game.Players.LocalPlayer.Data.DevilFruit.Value == '' then
-															Eat_Fruit = nil
-															Fruit_Check = nil
-															local fruitx = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryFruits")
-															for i,v in next,fruitx do
-																Check_Fruit(v.Name)
-															end
-															if Fruit_Check ~= nil then
-																result = {}
-																local regex = ("([^%s]+)"):format("-")
-																local xp = Fruit_Check
-																for each in xp:gmatch(regex) do
-																	table.insert(result, each)
-																end
-																Eat_Fruit = result[2] .. " Fruit"
-																game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadFruit",Fruit_Check)
-																if Eat_Fruit ~= nil then
-																	wait(.5)
-																	if game.Players.LocalPlayer.Backpack:FindFirstChild(Eat_Fruit) or game.Players.LocalPlayer.Character:FindFirstChild(Eat_Fruit) then
-																		repeat wait()
-																			EquipWeapon(Eat_Fruit)
-																		until game.Players.LocalPlayer.Character:FindFirstChild(Eat_Fruit) or not game.Players.LocalPlayer.Backpack:FindFirstChild(Eat_Fruit) and not game.Players.LocalPlayer.Character:FindFirstChild(Eat_Fruit)
-																		if game.Players.LocalPlayer.Character:FindFirstChild(Eat_Fruit) then
-																			game:GetService("Players").LocalPlayer.Character:FindFirstChild(Eat_Fruit).EatRemote:InvokeServer()
-																			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
-																			wait(3)
-																			Eat_Fruitx = true
-																		end
-																	end
-																end
-															end
-														end
-													end
-													Stop_Fast_Attack = false
-													Start_Farm_Bone = true
-													if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude >= 3000 then
-														repeat wait()
-															TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188))
-														until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude <= 3
-													elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude < 3000 then
-														Monster = nil
-														for i=1500,0,-300 do
-															GetMonster(i)
-														end
-														if Monster ~= nil and Monster.Humanoid.Health > 0 then
-															PosMon_X = Monster.HumanoidRootPart.CFrame
-															StatrMagnet = true
-															repeat wait()
-																TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,20,0))
-																EquipWeapon(Weapon)
-															until not Monster.Parent or Monster.Humanoid.Health <= 0
-															StatrMagnet = false
-														elseif Monster == nil then
-															for i=1500,0,-300 do
-																GetMonster(i)
-															end
-															if Monster == nil then
-																TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188))
-															end
-														end
-													end
-													Start_Farm_Bone = false
-												end
-											end
-										end
-									end
+                                        GetQuest('Evil')
+                                    elseif CheckQuest['Evil'] == -5 then
+                                        if game:GetService("Workspace").Map:FindFirstChild('HellDimension') then
+                                            if (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1200 then
+                                                repeat wait(.1)
+                                                    TP(game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot)
+                                                until (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10
+                                                wait(1)
+                                            elseif (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1200 then
+                                                Stop_Fast_Attack = false
+                                                GetTorchX('Torch1')
+                                                GetTorchX('Torch2')
+                                                GetTorchX('Torch3')
+                                                EquipWeapon(Weapon)
+                                                local check_monster = nil
+                                                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                    if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                                                        if v.Humanoid.Health > 0 then
+                                                            check_monster = true
+                                                            repeat wait(.1)
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                                TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                                EquipWeapon(Weapon)
+                                                            until not v.Parent or v.Humanoid.Health <= 0
+                                                        end
+                                                    end
+                                                end
+                                                if not check_monster then
+                                                    wait(1)
+                                                    local check_monster = nil
+                                                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                        if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and (game:GetService("Workspace").Map:FindFirstChild('HellDimension').WorldPivot.Position-v.HumanoidRootPart.Position).Magnitude <= 1000 then
+                                                            if v.Humanoid.Health > 0 then
+                                                                check_monster = true
+                                                            end
+                                                        end
+                                                    end
+                                                    if not check_monster then
+                                                        game:GetService("Workspace").Map.HellDimension.Exit.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                                                        wait(2)
+                                                    end 
+                                                end
+                                            end
+                                        elseif not game:GetService("Workspace").Map:FindFirstChild('HellDimension') then
+                                            if game.Workspace.Enemies:FindFirstChild("Soul Reaper") or game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
+                                                Stop_Fast_Attack = true
+                                                if not game.Workspace.Enemies:FindFirstChild("Soul Reaper") and game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
+                                                    repeat wait(.2)
+                                                        TP(game.ReplicatedStorage:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                                    until game.Workspace.Enemies:FindFirstChild("Soul Reaper")
+                                                    wait(1)
+                                                end
+                                                if game.Workspace.Enemies:FindFirstChild("Soul Reaper") then
+                                                    TP(game.Workspace.Enemies:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame*CFrame.new(0,0,2))
+                                                    wait(1)
+                                                end
+                                            elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check") > 0 and CheckItem('Bones') > 500 then
+                                                repeat wait(.2)
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check")
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
+                                                until game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check") == 0
+                                                wait(1)
+                                                if game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") then
+                                                    repeat wait(1)
+                                                        EquipWeapon("Hallow Essence")
+                                                        TP(CFrame.new(-8932.86, 143.258, 6063.31))
+                                                    until not game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") and not game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence")
+                                                end
+                                            elseif not game.Workspace.Enemies:FindFirstChild("Soul Reaper") and not game.ReplicatedStorage:FindFirstChild("Soul Reaper") then
+                                                Start_Farm_Bone = true
+                                                if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude >= 3000 then
+                                                    repeat wait()
+                                                        TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188))
+                                                    until (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude <= 3
+                                                elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-8817.880859375, 191.16761779785, 6298.6557617188)).Magnitude < 3000 then
+                                                    Monster = nil
+                                                    for i=1500,0,-300 do
+                                                        GetMonster(i)
+                                                    end
+                                                    if Monster ~= nil and Monster.Humanoid.Health > 0 then
+                                                        PosMon_X = Monster.HumanoidRootPart.CFrame
+                                                        StatrMagnet = true
+                                                        repeat wait()
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                            TPX(Monster.HumanoidRootPart.CFrame*CFrame.new(0,20,0))
+                                                            EquipWeapon(Weapon)
+                                                        until not Monster.Parent or Monster.Humanoid.Health <= 0
+                                                        StatrMagnet = false
+                                                    elseif Monster == nil then
+                                                        for i=1500,0,-300 do
+                                                            GetMonster(i)
+                                                        end
+                                                        if Monster == nil then
+                                                            TPX(CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188))
+                                                        end
+                                                    end
+                                                end
+                                                Start_Farm_Bone = false
+                                            end
+                                        end
+                                    end
 								elseif CheckQuest['Evil'] == 3 then
-									repeat wait()
-										TP(CFrame.new(-12392.2637, 603.319763, -6503.27832))
-									until (Vector3.new(-12392.2637, 603.319763, -6503.27832)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
-									if game:GetService("CoreGui"):FindFirstChild("     ") then
-										game:GetService("CoreGui")["     "].Enabled = false
-									end	
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
-									wait(1)
-									click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
+									Stop_Fast_Attack = false
+                                    Attack = true
+                                    repeat wait()
+                                        TP(CFrame.new(-12392.2637, 603.319763, -6503.27832))
+                                    until (Vector3.new(-12392.2637, 603.319763, -6503.27832)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
+                                    if game:GetService("CoreGui"):FindFirstChild("     ") then
+                                        game:GetService("CoreGui")["     "].Enabled = false
+                                    end	
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
+                                    wait(1)
+                                    click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
 								elseif CheckQuest['Good'] == 3 then
-									repeat wait()
-										TP(CFrame.new(-12392.5068, 603.319763, -6596.00586))
-									until (Vector3.new(-12392.5068, 603.319763, -6596.00586)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
-									if game:GetService("CoreGui"):FindFirstChild("     ") then
-										game:GetService("CoreGui")["     "].Enabled = false
-									end	
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
-									wait(1)
-									click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
+									Stop_Fast_Attack = false
+                                    Attack = true
+                                    repeat wait()
+                                        TP(CFrame.new(-12392.5068, 603.319763, -6596.00586))
+                                    until (Vector3.new(-12392.5068, 603.319763, -6596.00586)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
+                                    wait(1)
+                                    click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
 								elseif CheckQuest['Good'] == 4 and CheckQuest['Evil'] == 4 and game:GetService("Workspace").Map.Turtle.Cursed.BossDoor.Position.Y > 584 then
-									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 9/10')
-									EquipWeapon(Weapon)
-									repeat wait(.1)
-										TP(CFrame.new(-12359.1719, 603.319702, -6550.59717, 0.481593847, 0, -0.87639451, 0, 1, 0, 0.87639451, 0, 0.481593847))
-									until (Vector3.new(-12359.1719, 603.319702, -6550.59717)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-									if game:GetService("CoreGui"):FindFirstChild("     ") then
-										game:GetService("CoreGui")["     "].Enabled = false
-									end	
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
-									wait(1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
-									wait(1)
-									click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
+									Stop_Fast_Attack = false
+                                    Attack = true
+                                    Quest_CDK_S:Set('Quest CDK: 9/10')
+                                    EquipWeapon(Weapon)
+                                    repeat wait(.1)
+                                        TP(CFrame.new(-12359.1719, 603.319702, -6550.59717, 0.481593847, 0, -0.87639451, 0, 1, 0, 0.87639451, 0, 0.481593847))
+                                    until (Vector3.new(-12359.1719, 603.319702, -6550.59717)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
+                                    wait(1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
+                                    wait(1)
+                                    click(game:GetService("Players").LocalPlayer.PlayerGui.Main.Dialogue)
 								elseif game:GetService("Workspace").Map.Turtle.Cursed.BossDoor.Position.Y <= 584 then
-									if game:GetService("CoreGui"):FindFirstChild("     ") then
-										game:GetService("CoreGui")["     "].Enabled = true
-									end	
-									local Inventory = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")
-									for i,v in pairs(Inventory) do
-										if v.Type == "Sword" then
-											if v.Name == 'Cursed Dual Katana' then
-												Cursed_Dual_Katana_H = true
-												List.Quest = false
-											end
-										end
-									end
 									Cursed_Dual_Katana_Q_S:Set(' Cursed Dual Katana : 10/10')
 									CDK_Q_S_C = 10
-									if (Vector3.new(-12297.5605, 598.726013, -6532.96436)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-										repeat wait()
-											TPX(CFrame.new(-12379.1406, 601.433167, -6543.60742))
-										until Boss_Extant or (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
-										repeat wait()
-											TPZX(CFrame.new(-12330.197265625, 603.31982421875, -6549.11865234375))
-											for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-												if v.Name == "Cursed Skeleton Boss" then
-													Boss_Extant = true
-													game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0,30,0)
-												end
-											end
-										until Boss_Extant or (Vector3.new(-12330.197265625, 603.31982421875, -6549.11865234375)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 
-										wait(1)
-										for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-											if v.Name == "Cursed Skeleton Boss" then
-												repeat wait(.1)
-													Click()
-													Get_Item_Inventory('Tushita')
-													EquipWeapon('Tushita')
-													TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
-												until not v.Parent or v.Humanoid.Health <= 0
-												for i,v in pairs(Inventory) do
-													if v.Type == "Sword" then
-														if v.Name == 'Cursed Dual Katana' then
-															Cursed_Dual_Katana_H = true
-															List.Quest = false
-															CDK_Q_S_C = 11
-														end
-													end
-												end
-											end
-										end
-									elseif (Vector3.new(-12297.5605, 598.726013, -6532.96436)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 100 then
-										TPX(CFrame.new(-12297.5605, 598.726013, -6532.96436))
-									end	
+									repeat wait(.2)
+                                        TPX(CFrame.new(-12379.1406, 601.433167, -6543.60742))
+                                    until Boss_Extant or (Vector3.new(-12379.1406, 601.433167, -6543.60742)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3
+                                    repeat wait(.2)
+                                        TPZX(CFrame.new(-12330.197265625, 603.31982421875, -6549.11865234375))
+                                        for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                            if v.Name == "Cursed Skeleton Boss" then
+                                                Boss_Extant = true
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0,30,0)
+                                            end
+                                        end
+                                    until Boss_Extant or (Vector3.new(-12330.197265625, 603.31982421875, -6549.11865234375)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 
+                                    CDK_Q_S_C = 10
+                                    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                        if v.Name == "Cursed Skeleton Boss" then
+                                            repeat wait(.1)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                                Get_Item_Inventory('Tushita')
+                                                EquipWeapon('Tushita')
+                                                TP(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
+                                            until not v.Parent or v.Humanoid.Health <= 0
+                                            Cursed_Dual_Katana_H = true
+                                        end
+                                    end
 								end
 							else
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","OpenDoor",true)
