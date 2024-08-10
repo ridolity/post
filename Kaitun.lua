@@ -3852,17 +3852,12 @@ if _G.Switch_Hub_Series_R then
 		return Hits
 	end
 	time_xeg = 0
-	function AttackNoCDX()
+	function AttackNoCDX(v)
 		pcall(function()
 			local AC = CbFw2.activeController
 			for i = 1, 1 do 
-				local cac = {}
-				for k,v in pairs(game.Workspace.Characters:GetChildren()) do
-					if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 70 then
-						table.insert(cac, v.HumanoidRootPart)
-					end
-				end
-				bladehit = cac
+				bladehit = {}
+				table.insert(bladehit,v.HumanoidRootPart)
 				if #bladehit > 0 then
 					local u8 = debug.getupvalue(AC.attack, 5)
 					local u9 = debug.getupvalue(AC.attack, 6)
@@ -3880,12 +3875,11 @@ if _G.Switch_Hub_Series_R then
 					debug.setupvalue(AC.attack, 6, u9)
 					debug.setupvalue(AC.attack, 4, u7)
 					debug.setupvalue(AC.attack, 7, u10)
-					time_xeg = time_xeg +1
+					time_x = time_x+1
+					time_all_x = time_all_x+1
 					if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
-						AC.animator.anims.basic[1]:Play(0.01,0.01,0.01)
-						if time_xeg >= 50 then
-							game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
-						end
+						AC.animator.anims.basic[1]:Play(0.1,0.1,0.1)
+						game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
 						game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
 						game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 3, "")
 					end
@@ -3901,27 +3895,12 @@ if _G.Switch_Hub_Series_R then
 				end
 				local AC = CbFw2.activeController
 				for i = 1, 1 do 
-					--[[ 
-                    local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-                        plr.Character,
-                        {plr.Character.HumanoidRootPart},
-                        60
-                    )
-                    ]]
                     local cac = {}
                     for k,v in pairs(game.Workspace.Characters:GetChildren()) do
                         if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 and tostring(v.Name) == AttackPlayers then
                             table.insert(cac, v.HumanoidRootPart)
                         end
                     end
-                    --[[
-                    for k, v in pairs(bladehit) do
-                        if v.Parent:FindFirstChild("HumanoidRootPart") and (v.Parent:FindFirstChild("HumanoidRootPart").Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 and v.Parent:FindFirstChild("Humanoid").Health > 0 and string.find(tostring(v.Parent),'Lv') and not hash[v.Parent] then
-                            table.insert(cac, v.Parent.HumanoidRootPart)
-                            hash[v.Parent] = true
-                        end
-                    end
-                    ]]
 					bladehit = cac
 					if #bladehit > 0 then
 						local u8 = debug.getupvalue(AC.attack, 5)
@@ -3947,7 +3926,7 @@ if _G.Switch_Hub_Series_R then
 						time_all_p = time_all_p+1
 						if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
 							AC.animator.anims.basic[1]:Play(0.01,0.01,0.01)
-							if time_x >= 2 and time_all_p >= 150 or game:GetService("Players").LocalPlayer.PlayerGui.Main.SafeZone.Visible == true then
+							if time_x >= 2 and time_all_p >= 100 or game:GetService("Players").LocalPlayer.PlayerGui.Main.SafeZone.Visible == true then
 								game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
 								time_x = 0
 							end
@@ -4019,28 +3998,7 @@ if _G.Switch_Hub_Series_R then
 				if not Start_Farm_Mastery_Fruit and not Start_Farm_Mastery_Gun or Start_Farm_Bone or Start_Kill_Boss and List.Boss or List.Quest and Stop_Fast_Attack then
 					if game.Players.LocalPlayer.Character.Stun.Value == 0 and Auto_Farm_Kaitun and not Stop_Attack then
 						AttackNoCD()
-						wait(0.17)
-						--[[
-						game:GetService("RunService").Stepped:wait()
-						if time_all_x >= 20 then
-							if not Farm_Attack then
-								wait(0.05)
-							end
-							if time_all_x >= 22 then
-								if not Farm_Attack then
-									wait(0.05)
-								end
-								time_all_x = 0
-							end
-						end
-						if FarmPlayer and game:GetService("Players").LocalPlayer.PlayerGui.Main.SafeZone.Visible == true then
-							wait(.2)
-						end
-						wait()
-						if Farm_Bone then
-							wati(.1)
-						end
-						]]
+						wait(0.111)
 					end
 				else
 					wait(.1)
@@ -4048,7 +4006,6 @@ if _G.Switch_Hub_Series_R then
 			end)
 		end
 	end)
-
 	-- Set Flag
 	spawn(function()
 		game:GetService("RunService").Stepped:Connect(function()
@@ -5375,6 +5332,9 @@ if _G.Switch_Hub_Series_R then
 								end
 								kpdfohk = true
 							end
+						elseif God_Human_H and game.Players.LocalPlayer.Data.Level.Value >= 2550 and getgenv().Sword['Shark Anchor'] and not Shark_Anchor_H and Three_World then
+							Auto_Farm_Shark_Anchor = true
+							List.Quest = true
 						elseif update_new and game.Players.LocalPlayer.Data.Level.Value >= 2550 and _G.Mastery['Gun'] and not Max_Gun and Three_World then
 							if check_old == nil then
 								check_it = {}
@@ -5497,9 +5457,6 @@ if _G.Switch_Hub_Series_R then
 									end
 								end
 							end
-						elseif update_new and God_Human_H and game.Players.LocalPlayer.Data.Level.Value >= 2550 and getgenv().Sword['Shark Anchor'] and not Shark_Anchor_H and Three_World then
-							Auto_Farm_Shark_Anchor = true
-							List.Quest = true
 						elseif game.Players.LocalPlayer.Data.Level.Value >= 2550 and _G.Mastery['Sword'] and Three_World then
 							if Shisui_Mas and Saddi_Mas and Wando_Mas and game:GetService("Players").LocalPlayer.Data.Beli.Value >= 3000000 and not True_Triple_Katana_H then
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("MysteriousMan","1")
@@ -7442,7 +7399,6 @@ if _G.Switch_Hub_Series_R then
                             end
                         end
 					elseif Auto_Farm_Shark_Anchor and List.Quest and SelectBoss ~= 'rip_indra True Form' or Monster_Magnet_H and Auto_Farm_Shark_Anchor and List.Quest then
-						Set_Status_X(' Status : Farm Shark Anchor')
 						if not kmldgf and Shark_Tooth_Necklace_H and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild('Shark Tooth Necklace') then
 							local args = {
 								[1] = "LoadItem",
@@ -7457,103 +7413,44 @@ if _G.Switch_Hub_Series_R then
 							if v.Name == 'Terrorshark' or v.Name == 'Piranha' or v.Name == 'Shark' then
 								if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
 									Set_Status_X(' Status : Farm '..tostring(v.Name))
-									game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-									wait(0.5)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-									wait(0.5)
 									game.Players.LocalPlayer.Character.Humanoid.Sit = false
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
-									Farming_Tril = true
-									Attack = true
-									if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
+                                    Farming_Tril = true
+                                    Attack = false
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
 									end
-									postis = 30
-									postx = 20
-									if v.Name == 'Terrorshark' then
-										postis = 30
-										postx = 50
+									for iz,vz in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+										if vz:IsA('Tool') and tostring(vz.ToolTip) == 'Melee' then
+											Weapon = vz.Name
+										end 
 									end
-									for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-										if v:IsA('Tool') and tostring(v.ToolTip) == 'Melee' then
-											Weapon = v.Name
+									if v.Name == 'Terrorshark' then
+										Stop_Attack = true
+									end
+									repeat wait(.005)
+										if Stop_Attack and game.Players.LocalPlayer.Character.Humanoid.Health <= 4000 then
+											repeat wait(.1)
+												TP(v.HumanoidRootPart.CFrame*CFrame.new(0,300,0))
+											until game.Players.LocalPlayer.Character.Humanoid.Health >= 6000
+										else
+											if Stop_Attack then
+												AttackNoCDX(v)
+											end
+											v.HumanoidRootPart.CanCollide = false
+											v.Humanoid.WalkSpeed = 0
+											EquipWeapon(Weapon)
+											TP(v.HumanoidRootPart.CFrame*CFrame.new(0,50,10))
 										end
-									end
+									until not v.Parent or v.Humanoid.Health <= 0 
 									if v.Name == 'Terrorshark' then
-										spawn(function()
-											local time_hos = 0
-											repeat wait(1)
-												time_hos = time_hos+1
-												if Evo_Race_V3_H and time_hos >= 4 then
-													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
-												end
-												if time_hos >= 4 then
-													time_hos = 0
-												end
-											until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Shark_Anchor
-										end)
+										Stop_Attack = false
 									end
-									repeat wait()
-										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,30))
-									until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Shark_Anchor
-									Attack = false
-								end
-							end
-						end
-						for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-							if v.Name == 'Terrorshark' then
-								if v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 700 then
-									Set_Status_X(' Status : Farm '..tostring(v.Name))
-									game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-									wait(0.5)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-									wait(0.5)
-									game.Players.LocalPlayer.Character.Humanoid.Sit = false
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,50,0)
-									Farming_Tril = true
-									Attack = true
-									if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-									end
-									postis = 30
-									postx = 20
-									if v.Name == 'Terrorshark' then
-										postis = 30
-										postx = 50
-									end
-									for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-										if v:IsA('Tool') and tostring(v.ToolTip) == 'Melee' then
-											Weapon = v.Name
-										end
-									end
-									if v.Name == 'Terrorshark' then
-										spawn(function()
-											local time_hos = 0
-											repeat wait(1)
-												time_hos = time_hos+1
-												if Evo_Race_V3_H and time_hos >= 4 then
-													game:service('VirtualInputManager'):SendKeyEvent(true, "T", false, game)
-													wait(0.5)
-													game:service('VirtualInputManager'):SendKeyEvent(false, "T", false, game)
-												end
-												if time_hos >= 4 then
-													time_hos = 0
-												end
-											until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Shark_Anchor
-										end)
-									end
-									repeat wait()
-										EquipWeapon(Weapon)
-										TP(v.HumanoidRootPart.CFrame*CFrame.new(0,postx,30))
-									until not v.Parent or v.Humanoid.Health <= 0 or not Auto_Farm_Shark_Anchor
-									Attack = false
 								end
 							end
 						end
 						if CheckItem_X("Fool's Gold") <= 19 then
+							Set_Status_X(' Status : Farm Fish Boat')
 							for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 								if v.Name == 'FishBoat' and not Monster_Magnet_H then
 									if v:FindFirstChild('Health') and v.Health.Value > 0 and (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 800 then
@@ -7769,59 +7666,59 @@ if _G.Switch_Hub_Series_R then
 							end
 						end
 						if not Farming_Tril then
+							Set_Status_X(' Status : Go to Sea Events')
 							local Check_Boat_H = false 
 							for i,v in pairs(game.Workspace.Boats:GetChildren()) do
-								if Check_Boat_H == false and v.Name == 'PirateBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
-									Check_Boat_H = true
-									if position_boat == nil then
-										position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
-									end
-									--Status_Win:Set('Status: Go to monster.')
-									if (v.VehicleSeat.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude <= 18000 then
+                                if Check_Boat_H == false and v.Name == 'PirateBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+                                    Check_Boat_H = true
+                                    if position_boat == nil then
+                                        position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
+                                    end
+                                    if (v.VehicleSeat.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude <= 18000 then
+                                        position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
 										TPBoat(position_boat,v.VehicleSeat,280)
-										TP(position_boat)
-										game.Players.LocalPlayer.Character.Humanoid.Sit = false
-									else
-										if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
-											Stop_Boat()
-											if Monster_Magnet_H then
-												if (position_boat.Position-Vector3.new(-40887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-													position_boat = CFrame.new(-45887.2265625, 40.741893768310547, -658.2794799804688)
-												elseif (position_boat.Position-Vector3.new(-45887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-													position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
-												else
-													position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
-												end
-											else
-												if (position_boat.Position-Vector3.new(-37887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-													position_boat = CFrame.new(-50887.2265625, 40.741893768310547, -658.2794799804688)
-												elseif (position_boat.Position-Vector3.new(-50887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
-													position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
-												else
-													position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
-												end
-											end
-											wait(0.5)
-										elseif game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-											if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 13 then
-												game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
-												wait(0.5)
-												game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
-												wait(0.5)
-											else
-												TPBoat(position_boat,v.VehicleSeat,230)
-											end
-										else
-											Stop_Boat()
-											TP(v.VehicleSeat.CFrame,150) 
-										end
-									end
-								end
-							end
+                                        TP(position_boat)
+                                        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                    else
+                                        if (v.VehicleSeat.Position-position_boat.Position).Magnitude <= 50 then
+                                            Stop_Boat()
+                                            if Monster_Magnet_H then
+                                                if (position_boat.Position-Vector3.new(-40887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+                                                    position_boat = CFrame.new(-45887.2265625, 40.741893768310547, -658.2794799804688)
+                                                elseif (position_boat.Position-Vector3.new(-45887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+                                                    position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
+                                                else
+                                                    position_boat = CFrame.new(-40887.2265625, 40.741893768310547, -658.2794799804688)
+                                                end
+                                            else
+                                                if (position_boat.Position-Vector3.new(-37887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+                                                    position_boat = CFrame.new(-50887.2265625, 40.741893768310547, -658.2794799804688)
+                                                elseif (position_boat.Position-Vector3.new(-50887.2265625, 40.741893768310547, -658.2794799804688)).Magnitude <= 100 then
+                                                    position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
+                                                else
+                                                    position_boat = CFrame.new(-37887.2265625, 40.741893768310547, -658.2794799804688)
+                                                end
+                                            end
+                                            wait(0.5)
+                                        elseif game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                                            if (v.VehicleSeat.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 13 then
+                                                game:service('VirtualInputManager'):SendKeyEvent(true, "Space", false, game)
+                                                wait(0.5)
+                                                game:service('VirtualInputManager'):SendKeyEvent(false, "Space", false, game)
+                                                wait(0.5)
+                                            else
+                                                TPBoat(position_boat,v.VehicleSeat,230)
+                                            end
+                                        else
+                                            Stop_Boat()
+                                            TP(v.VehicleSeat.CFrame,150) 
+                                        end
+                                    end
+                                end
+                            end
 							if not Check_Boat_H then
 								if not Farming_Tril then
 									if not Check_Boat_H then
-										--Status_Win:Set('Status: Get boat.')
 										if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-998.3510131835938, 4.5834879875183105, -14038.31640625)).Magnitude <= 10 then
 											wait(1)
 											local args = {
@@ -11193,5 +11090,16 @@ if _G.Switch_Hub_Series_R then
 			end
 		end)
 	end
+
+	spawn(function()
+		while wait() do
+			getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(L_643_arg0)
+				if L_643_arg0.Name == 'ErrorPrompt' and L_643_arg0:FindFirstChild('MessageArea') and L_643_arg0.MessageArea:FindFirstChild("ErrorFrame") then
+					game:GetService("TeleportService"):Teleport(game.PlaceId)
+					wait(30)
+				end
+			end)
+		end
+	end)
 
 end
