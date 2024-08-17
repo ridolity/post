@@ -1153,73 +1153,143 @@ if _G.Switch_Hub_Series_R then
 			end
 		end
 	end
-	    
-	function TPX(RealTarget)
-		pcall(function()
-			local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
-			if Distance < 100 then
-				Speed = 1500
-			elseif Distance < 200 then
-				Speed = 1200
-			elseif Distance < 500 then
-				Speed = 515
-			elseif Distance < 1000 then
-				Speed = 315
-			elseif Distance >= 1000 then
-				Speed = 300
+	   
+	function TPX(...)
+		local L_246_ = {
+			...
+		}
+		local L_247_ = L_246_[1]
+		local L_248_
+		if type(L_247_) == "vector" then
+			L_248_ = CFrame.new(L_247_)
+		elseif type(L_247_) == "userdata" then
+			L_248_ = L_247_
+		elseif type(L_247_) == "number" then
+			L_248_ = CFrame.new(unpack(L_246_))
+		end
+		if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then
+			if tween then
+				tween:Cancel()
 			end
-			if Distance > 3000 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-				if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-RealTarget.Position).Magnitude <= 2000 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-				elseif Old_World and (Vector3.new(-4607.82275, 872.54248, -1667.55688)-RealTarget.Position).Magnitude <= 2000 then
+			repeat
+				wait()
+			until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0;
+			wait(0.2)
+		end
+		local L_249_ = {}
+		local L_250_ = (L_248_.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
+		.Magnitude
+		if L_250_ < 1000 then
+			Speed = 315
+		elseif L_250_ >= 1000 then
+			Speed = 300
+		end
+		if BypassTP and L_250_ > 3000 then 
+			if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+			elseif Old_World and (Vector3.new(-4607.82275, 872.54248, -1667.55688)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
+			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+			elseif Old_World and (Vector3.new(-2953.31884765625, 41.01357650756836, 2099.16943359375)-RealTarget.Position).Magnitude <= 2300 then
+				if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
-				elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-				elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-				elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-				elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-				elseif Old_World and (Vector3.new(-2953.31884765625, 41.01357650756836, 2099.16943359375)-RealTarget.Position).Magnitude <= 2300 then
-					if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
-					elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
-					end
-					TP(RealTarget)
-				elseif Old_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 1700 then
-					TP(RealTarget)
-				elseif New_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 3000 then
-					TP(RealTarget)
-				elseif New_World and List.Boss and Select_List_Boss == "Darkbeard" and Start_Kill_Boss then
-					TP(RealTarget)
-				elseif Three_World and List.Boss and Select_List_Boss == "Cake Prince" and Start_Kill_Boss then
-					TP(RealTarget)
-				elseif New_World and (Vector3.new(4768.3388671875, 8.318676948547363, 2868.102294921875)-RealTarget.Position).Magnitude <= 1700 then
-					TP(RealTarget)
-				elseif New_World and (Vector3.new(-5219.4585, 58.2147713, 2384.21191)-RealTarget.Position).Magnitude <= 1200 then
-					TP(RealTarget)
-				elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then 
-					local xpta = game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.HumanoidRootPart
-                    if xpta then
-                        game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(RealTarget)
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget
-                        task.wait()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget
-                        task.wait()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget
-                        task.wait()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = RealTarget
-                        wait(7)
-                    end
+				elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
 				end
-			elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
 				TP(RealTarget)
+			elseif Old_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 1700 then
+				TP(RealTarget)
+			elseif New_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 3000 then
+				TP(RealTarget)
+			elseif New_World and List.Boss and Select_List_Boss == "Darkbeard" and Start_Kill_Boss then
+				TP(RealTarget)
+			elseif Three_World and List.Boss and Select_List_Boss == "Cake Prince" and Start_Kill_Boss then
+				TP(RealTarget)
+			elseif New_World and (Vector3.new(4768.3388671875, 8.318676948547363, 2868.102294921875)-RealTarget.Position).Magnitude <= 1700 then
+				TP(RealTarget)
+			elseif New_World and (Vector3.new(-5219.4585, 58.2147713, 2384.21191)-RealTarget.Position).Magnitude <= 1200 then
+				TP(RealTarget)
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(5742.9599609375, 613.9691772460938, -283.685546875)-RealTarget.Position).Magnitude <= 2000 then 
+				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(5772.9599609375, 613.9691772460938, -283.685546875))
+				wait(1)
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-12463.6025390625, 378.3270568847656, -7566.0830078125)-RealTarget.Position).Magnitude <= 2000 then 
+				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(-12493.6025390625, 378.3270568847656, -7566.0830078125))
+				wait(1) 
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-5079.44677734375, 313.7293395996094, -3151.065185546875)-RealTarget.Position).Magnitude <= 2000 then 
+				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(-5099.44677734375, 313.7293395996094, -3151.065185546875))
+				wait(1)
+			elseif L_250_ > 3000 and Three_World and (Vector3.new(28286.35546875, 14896.5078125, 102.62469482421875)-RealTarget.Position).Magnitude <= 3000 then
+				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+				local args = {
+					[1] = "requestEntrance",
+					[2] = Vector3.new(28286.35546875, 14896.5078125, 132.62469482421875)
+				}
+	
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+				wait(1)
+			elseif L_250_ > 3000 and not AutoNextIsland and not (game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip") or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice")) and not (Name == "Fishman Commando" or Name == "Fishman Warrior") then
+				pcall(function()
+					if tween then
+						tween:Cancel()
+					end
+					fkwarp = false
+					if game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("SpawnPoint").Value == tostring(GetIsLand(L_248_)) then
+						wait(.1)
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TeleportToSpawn")
+					elseif game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("LastSpawnPoint").Value == tostring(GetIsLand(L_248_)) then
+						game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+						wait(0.1)
+						repeat
+							wait()
+						until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+					else
+						if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+							if fkwarp == false then
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = L_248_
+							end
+							fkwarp = true
+						end
+						wait(.08)
+						game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+						repeat
+							wait()
+						until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+						wait(.1)
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+					end
+					wait(0.2)
+					return
+				end)
 			end
+		end
+		local L_251_ = game:service"TweenService"
+		local L_252_ = TweenInfo.new((L_248_.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
+		.Magnitude / Speed, Enum.EasingStyle.Linear)
+		local L_253_, L_254_ = pcall(function()
+			tween = L_251_:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], L_252_, {
+				CFrame = L_248_
+			})
+			tween:Play()
 		end)
+		function L_249_:Stop()
+			tween:Cancel()
+		end
+		function L_249_:Wait()
+			tween.Completed:Wait()
+		end
+		return L_249_
 	end
+	BypassTP = true
 	Tool_Special_S:AddButton({
 		Name = ' Teleport Bypass ',
 		Callback = function()
@@ -6632,7 +6702,7 @@ if _G.Switch_Hub_Series_R then
 		gg.__namecall = newcclosure(function(...)
 			local method = getnamecallmethod()
 			local args = {...}
-			if Tejao and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil or Start_Farm_Mastery_Fruit and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil or Start_Farm_Mastery_Gun and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil then
+			if Tejao and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil or Aimbot_On and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil or Start_Farm_Mastery_Fruit and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil or Start_Farm_Mastery_Gun and tostring(method) == "FireServer" and PositionSkillMasteryDevilFruit ~= nil then
 				if tostring(args[1]) == "RemoteEvent" then 
 					if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
 						args[2] = PositionSkillMasteryDevilFruit
@@ -7959,13 +8029,14 @@ if _G.Switch_Hub_Series_R then
 											if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 											end
+											wait(0.5)
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
 										end
 										Start_Kill_Boss = true
 										repeat wait()
 											TPX(v.HumanoidRootPart.CFrame*CFrame.new(0,30,0))
 											EquipWeapon(Weapon)
-										until not v.Parent or v.Humanoid.Health <= 0
+										until not v.Parent or not v or v.Humanoid.Health <= 0
 										Start_Kill_Boss = false
 									end
 								end
@@ -8450,87 +8521,160 @@ if _G.Switch_Hub_Series_R then
 									local check_seabest = false
 									local check_boat = false
 									for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
-										if v:FindFirstChild('Health') and v.Health.Value > 0 and (Vector3.new(-3823.920654296875, 76.97933959960938, -11685.7734375)-v.HumanoidRootPart.Position).Magnitude >= 1500 then
-											check_seabest = true
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
-											Tejao = true
-											PositionSkillMasteryDevilFruit = v.HumanoidRootPart.CFrame
-											game.Players.LocalPlayer.Character.Humanoid.Sit = false
+										if v:FindFirstChild('HumanoidRootPart') and (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 and v.Health.Value > 0 then
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+											Weapon = 'Sharkman Karate'
+											Weapon2 = 'Sharkman Karate'
 											wait(1)
-											if game.Players.LocalPlayer.Character.Humanoid.Sit == false then 
-												Boat = nil
+											for ix,vx in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+												if vx:IsA('Tool') and tostring(vx.ToolTip) == 'Sword' then
+													Weapon2 = vx.Name
+												end
 											end
+											for ix,vx in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+												if vx:IsA('Tool') and tostring(vx.ToolTip) == 'Sword' then
+													Weapon2 = vx.Name
+												end
+											end
+											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+											end
+											PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+											Aimbot_On = true
+											local check_weapon = false
 											repeat wait()
-												TP(v.HumanoidRootPart.CFrame*CFrame.new(0,3,0))
-											until (v.HumanoidRootPart.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5
-											repeat wait()
-												EquipWeapon('Fishman Karate')
-												if game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:FindFirstChild('Fishman Karate') and tostring(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].Z.Title.TextColor) == 'Institutional white' and game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].Z.Cooldown.AbsoluteSize.X == 0 then
-													EquipWeapon('Fishman Karate')
-													TP(v.HumanoidRootPart.CFrame*CFrame.new(0,3,0))
-													wait(0.5)
-													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
-													if v.Health.Value > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
-														wait(.2)
-													end
-												elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:FindFirstChild('Fishman Karate') and tostring(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].X.Title.TextColor) == 'Institutional white' and game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].X.Cooldown.AbsoluteSize.X == 0 then
-													EquipWeapon('Fishman Karate')
-													TP(v.HumanoidRootPart.CFrame*CFrame.new(0,3,0))
-													wait(0.5)
-													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
-													if v.Health.Value > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
-														wait(.2)
-													end
-												elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:FindFirstChild('Fishman Karate') and tostring(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].C.Title.TextColor) == 'Institutional white' and game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills['Fishman Karate'].C.Cooldown.AbsoluteSize.X == 0 then
-													EquipWeapon('Fishman Karate')
-													TP(v.HumanoidRootPart.CFrame*CFrame.new(0,3,0))
-													wait(0.5)
-													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
-													if v.Health.Value > 0 then
-														game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
-														wait(.5)
-														game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
-														wait(.2)
+												EquipWeapon(Weapon)
+												for iy,vy in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:GetChildren()) do
+													if vy.Name == Weapon then
+														check_weapon = true
 													end
 												end
-											until not v.Parent or v.Health.Value <= 0
-											Tejao = false
+											until check_weapon
+											local check_weapon = false
+											repeat wait()
+												EquipWeapon(Weapon2)
+												for iy,vy in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:GetChildren()) do
+													if vy.Name == Weapon2 then
+														check_weapon = true
+													end
+												end
+											until check_weapon
+											local check_weapon = false
+											spawn(function()
+												repeat wait(.2)
+													if not Weapon_Z and GetSkill_C(Weapon,'Z') then
+														Weapon_Z = true
+													end
+													if not Weapon_X and GetSkill_C(Weapon,'X') then
+														Weapon_X = true
+													end
+													if not Weapon_C and GetSkill_C(Weapon,'C') then
+														Weapon_C = true
+													end
+												until not v.Parent or tonumber(v.Health.Value) <= 0 
+											end)
+											spawn(function()
+												repeat wait(.2)
+													if not Weapon2_Z and GetSkill_C(Weapon2,'Z') then
+														Weapon2_Z = true
+													end
+													if not Weapon2_X and GetSkill_C(Weapon2,'X') then
+														Weapon2_X = true
+													end
+												until not v.Parent or tonumber(v.Health.Value) <= 0 
+											end)
+											spawn(function()
+												repeat wait(.5)
+													if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+														game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+													end
+													if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
+														local args = {
+															[1] = "Ken",
+															[2] = true
+														}
+			
+														game:GetService("ReplicatedStorage").Remotes.CommE:FireServer(unpack(args))
+													end
+												until not v.Parent or tonumber(v.Health.Value) <= 0
+											end)
+											spawn(function()
+												repeat wait()
+													TP(v.HumanoidRootPart.CFrame*CFrame.new(0,5,0))
+												until not v.Parent or tonumber(v.Health.Value) <= 0 
+											end)
+											repeat wait()
+												if Weapon_Z then
+													EquipWeapon(Weapon)
+													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.1)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													Weapon_Z = false
+												elseif Weapon_X then
+													EquipWeapon(Weapon)
+													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.1)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													Weapon_X = false
+												elseif Weapon_C then
+													EquipWeapon(Weapon)
+													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+													game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+													wait(.1)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+													Weapon_C = false
+												elseif Weapon2_Z then
+													EquipWeapon(Weapon2)
+													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+													game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+													wait(.1)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+													Weapon2_Z = false
+												elseif Weapon2_X then
+													EquipWeapon(Weapon2)
+													PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+													game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+													wait(.1)
+													game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+													Weapon2_X = false
+												end
+											until not v.Parent or v.Health.Value <= 0 
+											Aimbot_On = false
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","3")
 											wait(1)
 											if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","3") == -2 then
-												Evo_Race_V3_H = true
-												if Evo_Race_V3_H then
-													Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 3')
-												elseif Evo_Race_V2_H then
-													Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 2')
-												elseif Evo_Race_V1_H then
-													Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 1')
+												Evo_Race_V3_H = true 
+												if New_World or Three_World then
+													if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Alchemist","3") == -2 then -- V1
+														Evo_Race_V1_H = true
+													end
 												end
-												Quest_Start_Evo_Fishman_V3 = false
-												List.Quest = false
-												Not_Farm_Boss = false 
+												if New_World or Three_World then
+													if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","1") ~= nil and Evo_Race_V1_H then -- V2
+														Evo_Race_V2_H = true
+													end
+												end
+												if New_World or Three_World then
+													if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Wenlocktoad","3") == -2 then
+														Evo_Race_V3_H = true
+													end
+												end 
 											end
-										end
+										end 
 									end
 									if not check_seabest then
 										for i,v in pairs(game:GetService("Workspace").Boats:GetChildren()) do
-											if v.Name == 'PirateBasic' and tostring(v.Owner.Value) == game.Players.LocalPlayer.Name then
+											if v.Name == 'PirateBrigade' and v:FindFirstChild('Owner') and tostring(v.Owner.Value) == game.Players.LocalPlayer.Name then
 												check_boat = true
 												if (Vector3.new(3017.20068359375, -4.25, -2686.33251953125)-v.VehicleSeat.Position).Magnitude >= 30 then
 													if game.Players.LocalPlayer.Character.Humanoid.Sit == true then	
-														Boat = 'Bit'
-														TPBoat(CFrame.new(3017.20068359375, -4.25, -2686.33251953125),v.VehicleSeat,200)
+														TPBoat(CFrame.new(3017.20068359375, -4.25, -2686.33251953125),v.VehicleSeat,230)
 													elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.VehicleSeat.Position).Magnitude >= 10 then
 														Boat = nil
 														TP(v.VehicleSeat.CFrame)
 													else
-														Boat = 'Bit'
 														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.VehicleSeat.CFrame*CFrame.new(0,2,0)
 														wait(1)
 													end
@@ -8539,10 +8683,11 @@ if _G.Switch_Hub_Series_R then
 														game:GetService'VirtualUser':Button1Down(Vector2.new(1280,600))
 														wait(1)
 													elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.VehicleSeat.Position).Magnitude >= 10 then
-														Boat = nil
 														TP(v.VehicleSeat.CFrame)
+													elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.VehicleSeat.Position).Magnitude >= 3000 then
+														v:Destroy()
+														check_boat = false
 													else
-														Boat = 'Bit'
 														game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.VehicleSeat.CFrame*CFrame.new(0,2,0)
 														wait(1)
 													end
@@ -8553,9 +8698,8 @@ if _G.Switch_Hub_Series_R then
 									if not check_boat and not check_seabest then
 										TP(CFrame.new(-1967.2530517578125, 9.2692289352417, -2579.33154296875))
 										if (Vector3.new(-1967.2530517578125, 9.2692289352417, -2579.33154296875)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateBasic")
+											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateBrigade")
 											wait(1)
-											Boat = 'bit'
 										end
 									end
 								else
@@ -9529,9 +9673,6 @@ if _G.Switch_Hub_Series_R then
                                     repeat wait()
                                         TP(CFrame.new(-12392.2637, 603.319763, -6503.27832))
                                     until (Vector3.new(-12392.2637, 603.319763, -6503.27832)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
-                                    if game:GetService("CoreGui"):FindFirstChild("     ") then
-                                        game:GetService("CoreGui")["     "].Enabled = false
-                                    end	
                                     wait(1)
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
                                     wait(1)
@@ -9541,6 +9682,7 @@ if _G.Switch_Hub_Series_R then
 								elseif CheckQuest['Good'] == 3 then
 									Stop_Fast_Attack = false
                                     Attack = true
+									EquipWeapon(Weapon)
                                     repeat wait()
                                         TP(CFrame.new(-12392.5068, 603.319763, -6596.00586))
                                     until (Vector3.new(-12392.5068, 603.319763, -6596.00586)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2
@@ -9553,7 +9695,6 @@ if _G.Switch_Hub_Series_R then
 								elseif CheckQuest['Good'] == 4 and CheckQuest['Evil'] == 4 and game:GetService("Workspace").Map.Turtle.Cursed.BossDoor.Position.Y > 584 then
 									Stop_Fast_Attack = false
                                     Attack = true
-                                    Quest_CDK_S:Set('Quest CDK: 9/10')
                                     EquipWeapon(Weapon)
                                     repeat wait(.1)
                                         TP(CFrame.new(-12359.1719, 603.319702, -6550.59717, 0.481593847, 0, -0.87639451, 0, 1, 0, 0.87639451, 0, 0.481593847))
