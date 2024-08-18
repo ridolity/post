@@ -1185,50 +1185,50 @@ if _G.Switch_Hub_Series_R then
 			Speed = 300
 		end
 		if BypassTP and L_250_ > 3000 then 
-			if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-RealTarget.Position).Magnitude <= 2000 then
+			if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-			elseif Old_World and (Vector3.new(-4607.82275, 872.54248, -1667.55688)-RealTarget.Position).Magnitude <= 2000 then
+			elseif Old_World and (Vector3.new(-4607.82275, 872.54248, -1667.55688)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
-			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
+			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
+			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-RealTarget.Position).Magnitude <= 2000 then
+			elseif New_World and (Vector3.new(923.21252441406, 126.9760055542, 32852.83203125)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-RealTarget.Position).Magnitude <= 2000 then
+			elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-L_247_.Position).Magnitude <= 2000 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-			elseif Old_World and (Vector3.new(-2953.31884765625, 41.01357650756836, 2099.16943359375)-RealTarget.Position).Magnitude <= 2300 then
+			elseif Old_World and (Vector3.new(-2953.31884765625, 41.01357650756836, 2099.16943359375)-L_247_.Position).Magnitude <= 2300 then
 				if Old_World and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
 				elseif Old_World and (Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
 					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
 				end
-				TP(RealTarget)
-			elseif Old_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 1700 then
-				TP(RealTarget)
-			elseif New_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-RealTarget.Position).Magnitude <= 3000 then
-				TP(RealTarget)
+				TP(L_247_)
+			elseif Old_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-L_247_.Position).Magnitude <= 1700 then
+				TP(L_247_)
+			elseif New_World and (Vector3.new(3876.00366, 24.6882591, -3820.21777)-L_247_.Position).Magnitude <= 3000 then
+				TP(L_247_)
 			elseif New_World and List.Boss and Select_List_Boss == "Darkbeard" and Start_Kill_Boss then
-				TP(RealTarget)
+				TP(L_247_)
 			elseif Three_World and List.Boss and Select_List_Boss == "Cake Prince" and Start_Kill_Boss then
-				TP(RealTarget)
-			elseif New_World and (Vector3.new(4768.3388671875, 8.318676948547363, 2868.102294921875)-RealTarget.Position).Magnitude <= 1700 then
-				TP(RealTarget)
-			elseif New_World and (Vector3.new(-5219.4585, 58.2147713, 2384.21191)-RealTarget.Position).Magnitude <= 1200 then
-				TP(RealTarget)
-			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(5742.9599609375, 613.9691772460938, -283.685546875)-RealTarget.Position).Magnitude <= 2000 then 
+				TP(L_247_)
+			elseif New_World and (Vector3.new(4768.3388671875, 8.318676948547363, 2868.102294921875)-L_247_.Position).Magnitude <= 1700 then
+				TP(L_247_)
+			elseif New_World and (Vector3.new(-5219.4585, 58.2147713, 2384.21191)-L_247_.Position).Magnitude <= 1200 then
+				TP(L_247_)
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(5742.9599609375, 613.9691772460938, -283.685546875)-L_247_.Position).Magnitude <= 2000 then 
 				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(5772.9599609375, 613.9691772460938, -283.685546875))
 				wait(1)
-			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-12463.6025390625, 378.3270568847656, -7566.0830078125)-RealTarget.Position).Magnitude <= 2000 then 
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-12463.6025390625, 378.3270568847656, -7566.0830078125)-L_247_.Position).Magnitude <= 2000 then 
 				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(-12493.6025390625, 378.3270568847656, -7566.0830078125))
 				wait(1) 
-			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-5079.44677734375, 313.7293395996094, -3151.065185546875)-RealTarget.Position).Magnitude <= 2000 then 
+			elseif L_250_ > 3000 and Valkyrie_Helmet_H and (Vector3.new(-5079.44677734375, 313.7293395996094, -3151.065185546875)-L_247_.Position).Magnitude <= 2000 then 
 				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('requestEntrance',Vector3.new(-5099.44677734375, 313.7293395996094, -3151.065185546875))
 				wait(1)
-			elseif L_250_ > 3000 and Three_World and (Vector3.new(28286.35546875, 14896.5078125, 102.62469482421875)-RealTarget.Position).Magnitude <= 3000 then
+			elseif L_250_ > 3000 and Three_World and (Vector3.new(28286.35546875, 14896.5078125, 102.62469482421875)-L_247_.Position).Magnitude <= 3000 then
 				TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 				local args = {
 					[1] = "requestEntrance",
@@ -4745,14 +4745,8 @@ if _G.Switch_Hub_Series_R then
 			end
 		end
 	end
-	if Evo_Race_V3_H then
-		Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 3')
-	elseif Evo_Race_V2_H and Evo_Race_V1_H then
-		Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 2')
-	elseif Evo_Race_V1_H then
-		Race_S:Set(' Race : '..tostring(game.Players.LocalPlayer.Data.Race.Value)..' : 1')
-	end
-    if not table.find(getgenv().Quest['Evo Race']['Select Race'],tostring(game.Players.LocalPlayer.Data.Race.Value)) and _G.Race['Lock Race'] then
+	
+    if not table.find(_G.Race['Select Race'],tostring(game.Players.LocalPlayer.Data.Race.Value)) and _G.Race['Lock Race'] then
 		Select_race_low  = true
     end
 	-- Quest
